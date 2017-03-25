@@ -15,12 +15,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 
     /* Media Resources */
     var currentSongTitle: String!
+    var currentSongArtist: String!
     var currentSongURL: URL!
     var audioPlayer = AVPlayer()
     var editSoundEffect = SoundEffect()
     var isPlaying = false
     var musicVolume: Float = 0.5
     var soundEffectVolume: Float = 0.5
+    var recorder = AVAudioRecorder()
     
     /* Data Instance Variables */
     var showingEditView = false
@@ -31,9 +33,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     /* Media References */
     @IBOutlet weak var controlStackView: UIStackView!
+    @IBOutlet weak var controlStackViewContainer: UIView!
     @IBOutlet weak var chooseMusicButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var nowPlayingContainer: UIView!
     @IBOutlet weak var nowPlayingLabel: UILabel!
+    @IBOutlet weak var nowPlayingHeaderLabel: UILabel!
     @IBOutlet weak var editSoundsButton: UIButton!
     @IBOutlet weak var topSliderLabel: UILabel!
     @IBOutlet weak var bottomSliderLabel: UILabel!
@@ -176,7 +181,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // Update UI
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.35, animations: {
-                self.controlStackView.isHidden = true
+                self.controlStackViewContainer.isHidden = true
                 self.topSlider.isHidden = true
                 self.bottomSlider.isHidden = true
                 self.topSliderLabel.isHidden = true
@@ -184,6 +189,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 self.settingsStackView.isHidden = false
                 
                 self.view.backgroundColor = UIColor.hexStringToUIColor(hex: "2662B5")
+                self.controlStackViewContainer.backgroundColor = UIColor.hexStringToUIColor(hex: "2662B5")
                 
                 for button in self.buttons {
                     button.backgroundColor = UIColor.hexStringToUIColor(hex: "2662B5")
@@ -200,7 +206,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.35, animations: {
             
-                self.controlStackView.isHidden = false
+                self.controlStackViewContainer.isHidden = false
                 self.topSlider.isHidden = false
                 self.bottomSlider.isHidden = false
                 self.topSliderLabel.isHidden = false
@@ -208,6 +214,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 self.settingsStackView.isHidden = true
                 
                 self.view.backgroundColor = UIColor.hexStringToUIColor(hex: "2C2C2C")
+                self.controlStackViewContainer.backgroundColor = UIColor.hexStringToUIColor(hex: "2C2C2C")
                 
                 for button in self.buttons {
                     button.backgroundColor = UIColor.hexStringToUIColor(hex: "5C5E66")
@@ -220,18 +227,22 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func showpicker(){
         DispatchQueue.main.async {
-            self.pickerView.reloadAllComponents()
-            self.pickerView.isHidden = false
-            self.toolBar.isHidden = false
-            self.pickerView.selectedRow(inComponent: 0)
+            UIView.animate(withDuration: 0.35, animations: {
+                self.pickerView.reloadAllComponents()
+                self.pickerView.isHidden = false
+                self.toolBar.isHidden = false
+                self.pickerView.selectedRow(inComponent: 0)
+            })
         }
     }
     
     func hidePicker(){
         DispatchQueue.main.async {
-            self.pickerView.selectRow(0, inComponent: 0, animated: false)
-            self.pickerView.isHidden = true
-            self.toolBar.isHidden = true
+            UIView.animate(withDuration: 0.35, animations: {
+                self.pickerView.selectRow(0, inComponent: 0, animated: false)
+                self.pickerView.isHidden = true
+                self.toolBar.isHidden = true
+            })
         }
     }
     
@@ -422,9 +433,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 }
                 // Update UI
                 DispatchQueue.main.async {
+                    self.nowPlayingHeaderLabel.isHidden = true
                     self.nowPlayingLabel.text = "No Song"
                     self.playButton.setTitle("Play", for: .normal)
                     self.playButton.isEnabled = false
+                    self.playButton.backgroundColor = UIColor.darkGray
                 }
             } else if(self.currentSongTitle != nil && self.currentSongTitle == "Cancel"){
                 // The user canceled
@@ -440,9 +453,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 
                 // Update the UI
                 DispatchQueue.main.async {
-                    self.nowPlayingLabel.text = "Now Playing: \(self.currentSongTitle!)"
+                    self.nowPlayingHeaderLabel.isHidden = false
+                    self.nowPlayingLabel.text = self.currentSongTitle!
+                    self.nowPlayingHeaderLabel.text = self.currentSongArtist!
                     self.playButton.setTitle("Play", for: .normal)
                     self.playButton.isEnabled = true
+                    self.playButton.backgroundColor = UIColor.hexStringToUIColor(hex: "5C5E66")
                 }
             }
         }
@@ -458,10 +474,21 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // Pass the selected object to the new view controller.
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
+    
     /* View Controller Load */
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // TODO: Use these to change UI for different screen sizes
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
+        
+        
         
         // Set Delegates
         appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -472,6 +499,20 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         // Setup UI
         DispatchQueue.main.async {
+            // Now Playing UI
+            self.nowPlayingHeaderLabel.isHidden = true
+            self.playButton.setTitleColor(UIColor.lightGray, for: .disabled)
+            self.playButton.backgroundColor = UIColor.darkGray
+            self.nowPlayingContainer.clipsToBounds = true
+            self.nowPlayingContainer.layer.cornerRadius = 2
+            self.nowPlayingContainer.layer.borderColor = UIColor.hexStringToUIColor(hex: "7B202B").cgColor
+            self.nowPlayingContainer.layer.borderWidth = 1
+            
+            // Setup Edit UI
+            self.restoreDefaultsButton.setTitle("Restore Defaults", for: .normal)
+            self.saveButton.setTitle("Done", for: .normal)
+            self.instructionsLabel.text = "Tap on a button to change the sound effect. Tap and hold on a button to choose from a list"
+            
             // PickerView
             self.pickerView.isHidden = true
             self.pickerView.dataSource = self
@@ -544,11 +585,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             }
             
             // Control View UI Touches
-            self.controlStackView.layer.borderColor = UIColor.darkGray.cgColor
-            self.controlStackView.layer.borderWidth = 2
-            self.controlStackView.clipsToBounds = true
-            self.controlStackView.layer.cornerRadius = 3
-            self.controlStackView.inputView?.backgroundColor = UIColor.darkText
+            self.controlStackViewContainer.layer.borderColor = UIColor.darkGray.cgColor
+            self.controlStackViewContainer.layer.borderWidth = 2
+            self.controlStackViewContainer.clipsToBounds = true
+            self.controlStackViewContainer.layer.cornerRadius = 3
+            self.controlStackViewContainer.backgroundColor = UIColor.darkText
             
             
         }

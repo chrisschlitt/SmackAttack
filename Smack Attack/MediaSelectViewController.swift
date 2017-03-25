@@ -12,6 +12,7 @@ import MediaPlayer
 class MediaSelectViewController: UITableViewController, MPMediaPickerControllerDelegate {
 
     var chosenSongTitle: String!
+    var chosenSongArtist: String!
     var chosenSongURL: URL!
     
     override func viewDidLoad() {
@@ -19,6 +20,7 @@ class MediaSelectViewController: UITableViewController, MPMediaPickerControllerD
 
         
         self.chosenSongTitle = "Cancel"
+        self.chosenSongArtist = "None"
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -80,12 +82,15 @@ class MediaSelectViewController: UITableViewController, MPMediaPickerControllerD
                     let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
                     
                     
+                    
+                    
                     var url = (textField?.text)!
                     if(!url.hasPrefix("http")){
                         url = "https://" + url
                     }
                     
-                    self.chosenSongTitle = "URL Song"
+                    self.chosenSongTitle = "Stream"
+                    self.chosenSongArtist = url
                     self.chosenSongURL = URL(string: url)
                     self.performSegue(withIdentifier: "unwindToMenu", sender: self)
                     
@@ -98,6 +103,7 @@ class MediaSelectViewController: UITableViewController, MPMediaPickerControllerD
             
         } else if(indexPath.row == 5){
             self.chosenSongTitle = "No Song"
+            self.chosenSongArtist = " "
             self.chosenSongURL = nil
             self.performSegue(withIdentifier: "unwindToMenu", sender: self)
         }
@@ -166,6 +172,7 @@ class MediaSelectViewController: UITableViewController, MPMediaPickerControllerD
             } else {
                 // Load sing
                 self.chosenSongTitle = mediaItemCollection.items.first!.title
+                self.chosenSongArtist = mediaItemCollection.items.first!.artist
                 self.chosenSongURL = mediaItemCollection.items.first!.assetURL
                 performSegue(withIdentifier: "unwindToMenu", sender: self)
             }
@@ -183,6 +190,7 @@ class MediaSelectViewController: UITableViewController, MPMediaPickerControllerD
             let vc = segue.destination as! ViewController
             vc.currentSongURL = self.chosenSongURL
             vc.currentSongTitle = self.chosenSongTitle
+            vc.currentSongArtist = self.chosenSongArtist
         }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
