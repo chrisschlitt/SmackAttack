@@ -31,34 +31,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fPV-S8-6Tg">
-                                <rect key="frame" x="82.5" y="232.5" width="210" height="202"/>
+                                <rect key="frame" x="83" y="245.5" width="210" height="177"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wh-eu-FZN">
-                                        <rect key="frame" x="0.0" y="0.0" width="210" height="120"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="210" height="90"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="N4W-9z-2cK"/>
+                                            <constraint firstAttribute="height" constant="90" id="N4W-9z-2cK"/>
                                             <constraint firstAttribute="width" constant="210" id="pu0-gY-4cF"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8Y-MK-nS8">
-                                        <rect key="frame" x="95" y="130" width="20" height="31"/>
-                                        <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="17"/>
-                                        <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
-                                        <connections>
-                                            <action selector="saveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8J9-8w-i3q"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oIN-A3-O8e">
-                                        <rect key="frame" x="95" y="171" width="20" height="31"/>
-                                        <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="17"/>
-                                        <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
-                                        <connections>
-                                            <action selector="restoreDefaultsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="615-57-54N"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="IhZ-xN-v68">
+                                        <rect key="frame" x="95" y="100" width="20" height="77"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8Y-MK-nS8">
+                                                <rect key="frame" x="0.0" y="0.0" width="20" height="31"/>
+                                                <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="17"/>
+                                                <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
+                                                <connections>
+                                                    <action selector="saveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8J9-8w-i3q"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oIN-A3-O8e">
+                                                <rect key="frame" x="0.0" y="46" width="20" height="31"/>
+                                                <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="17"/>
+                                                <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
+                                                <connections>
+                                                    <action selector="restoreDefaultsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="615-57-54N"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="see-YL-ewK">
@@ -71,36 +76,49 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="240" height="33.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="Slf-Nm-Bgc">
-                                                        <rect key="frame" x="0.0" y="-3" width="240" height="37"/>
+                                                        <rect key="frame" x="0.0" y="-3" width="200" height="36.5"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Song" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4L-kL-zRB">
-                                                                <rect key="frame" x="0.0" y="0.0" width="240" height="27"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Song" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4L-kL-zRB">
+                                                                <rect key="frame" x="0.0" y="0.0" width="200" height="26.5"/>
                                                                 <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="17"/>
                                                                 <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now Playing" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N9e-Uy-5FZ">
-                                                                <rect key="frame" x="0.0" y="22" width="240" height="15"/>
+                                                                <rect key="frame" x="0.0" y="21.5" width="200" height="15"/>
                                                                 <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="10"/>
                                                                 <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                     </stackView>
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPG-Is-5Xp">
+                                                        <rect key="frame" x="210" y="4" width="25" height="25"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="25" id="SGf-hG-ISu"/>
+                                                            <constraint firstAttribute="width" constant="25" id="z1l-6u-bI0"/>
+                                                        </constraints>
+                                                        <state key="normal" image="Icon-sound-file.png"/>
+                                                        <connections>
+                                                            <action selector="volumeButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lbH-xo-MhP"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.50196078430000002" green="0.090196078430000007" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="Slf-Nm-Bgc" secondAttribute="trailing" id="2Qk-3X-t5H"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Slf-Nm-Bgc" secondAttribute="trailing" constant="40" id="2Qk-3X-t5H"/>
+                                                    <constraint firstAttribute="trailing" secondItem="IPG-Is-5Xp" secondAttribute="trailing" constant="5" id="EhT-Dq-Kz6"/>
                                                     <constraint firstAttribute="bottom" secondItem="Slf-Nm-Bgc" secondAttribute="bottom" id="LC9-gG-SQB"/>
                                                     <constraint firstItem="Slf-Nm-Bgc" firstAttribute="top" secondItem="q9z-Kv-net" secondAttribute="top" constant="-3" id="YxV-ta-waa"/>
                                                     <constraint firstItem="Slf-Nm-Bgc" firstAttribute="leading" secondItem="q9z-Kv-net" secondAttribute="leading" id="lL6-PG-XsK"/>
+                                                    <constraint firstItem="IPG-Is-5Xp" firstAttribute="centerY" secondItem="q9z-Kv-net" secondAttribute="centerY" id="weD-pd-wPT"/>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="guq-Gp-Ley">
-                                                <rect key="frame" x="2" y="43.5" width="236" height="33"/>
+                                                <rect key="frame" x="0.0" y="43.5" width="240" height="33"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZX-5n-uSK">
-                                                        <rect key="frame" x="0.0" y="0.0" width="113" height="33"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="115" height="33"/>
                                                         <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
                                                         <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                                         <state key="normal" title="Edit Sounds"/>
@@ -109,38 +127,51 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWK-He-EZ7">
-                                                        <rect key="frame" x="123" y="0.0" width="113" height="33"/>
+                                                        <rect key="frame" x="125" y="0.0" width="115" height="33"/>
                                                         <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
                                                         <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                                         <state key="normal" title="Choose Song"/>
                                                         <connections>
-                                                            <action selector="chooseMusicButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B34-13-Llr"/>
                                                             <segue destination="d3x-92-xqh" kind="presentation" identifier="goToMediaSelectSegue" id="50f-ae-PRn"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1MY-ic-nzD">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BJy-Ft-UDN">
                                                 <rect key="frame" x="0.0" y="86.5" width="240" height="33.5"/>
-                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
-                                                <state key="normal" title="Play"/>
-                                                <connections>
-                                                    <action selector="playButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cVY-eM-is3"/>
-                                                </connections>
-                                            </button>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1MY-ic-nzD">
+                                                        <rect key="frame" x="0.0" y="1.5" width="240" height="32"/>
+                                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
+                                                        <state key="normal" title="Play"/>
+                                                        <connections>
+                                                            <action selector="playButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cVY-eM-is3"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="1MY-ic-nzD" firstAttribute="leading" secondItem="BJy-Ft-UDN" secondAttribute="leading" id="36v-O2-Xyn"/>
+                                                    <constraint firstAttribute="trailing" secondItem="1MY-ic-nzD" secondAttribute="trailing" id="7Mr-K7-zmG"/>
+                                                    <constraint firstItem="1MY-ic-nzD" firstAttribute="centerY" secondItem="BJy-Ft-UDN" secondAttribute="centerY" id="E66-U6-sUM"/>
+                                                    <constraint firstAttribute="trailing" secondItem="1MY-ic-nzD" secondAttribute="trailing" id="Oy1-Iq-4eA"/>
+                                                    <constraint firstItem="1MY-ic-nzD" firstAttribute="leading" secondItem="BJy-Ft-UDN" secondAttribute="leading" id="VE2-Qv-UMe"/>
+                                                    <constraint firstItem="1MY-ic-nzD" firstAttribute="centerX" secondItem="BJy-Ft-UDN" secondAttribute="centerX" id="gNu-os-2aM"/>
+                                                    <constraint firstItem="1MY-ic-nzD" firstAttribute="centerX" secondItem="BJy-Ft-UDN" secondAttribute="centerX" id="nve-wM-nLa"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.17128013959999999" green="0.17128013959999999" blue="0.17128013959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="240" id="8dk-UO-Y2J"/>
-                                            <constraint firstAttribute="trailing" secondItem="1MY-ic-nzD" secondAttribute="trailing" id="93v-f3-5qg"/>
                                             <constraint firstAttribute="height" constant="120" id="AMX-tr-yY2"/>
                                             <constraint firstItem="q9z-Kv-net" firstAttribute="top" secondItem="yfI-xl-p3V" secondAttribute="top" id="Ejo-RL-SNa"/>
                                             <constraint firstItem="guq-Gp-Ley" firstAttribute="centerX" secondItem="yfI-xl-p3V" secondAttribute="centerX" id="TFJ-M1-7dh"/>
                                             <constraint firstItem="guq-Gp-Ley" firstAttribute="top" secondItem="q9z-Kv-net" secondAttribute="bottom" constant="10" id="Xap-CZ-2rp"/>
-                                            <constraint firstItem="1MY-ic-nzD" firstAttribute="leading" secondItem="yfI-xl-p3V" secondAttribute="leading" id="Xx4-l2-4jq"/>
                                             <constraint firstAttribute="trailing" secondItem="q9z-Kv-net" secondAttribute="trailing" id="Yyo-Wg-iZd"/>
                                             <constraint firstItem="q9z-Kv-net" firstAttribute="leading" secondItem="yfI-xl-p3V" secondAttribute="leading" id="ZGt-7O-BP9"/>
-                                            <constraint firstItem="1MY-ic-nzD" firstAttribute="centerX" secondItem="yfI-xl-p3V" secondAttribute="centerX" id="pqC-ea-5yW"/>
+                                            <constraint firstAttribute="trailing" secondItem="BJy-Ft-UDN" secondAttribute="trailing" id="e8B-H9-4cl"/>
+                                            <constraint firstItem="BJy-Ft-UDN" firstAttribute="leading" secondItem="yfI-xl-p3V" secondAttribute="leading" id="l19-b5-aAW"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -152,32 +183,50 @@
                                     <constraint firstItem="yfI-xl-p3V" firstAttribute="centerY" secondItem="see-YL-ewK" secondAttribute="centerY" id="pUB-le-CUD"/>
                                 </constraints>
                             </view>
-                            <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Huo-nd-fZb">
-                                <rect key="frame" x="73" y="409" width="229" height="31"/>
-                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="bottomSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="zR5-un-U4v"/>
-                                </connections>
-                            </slider>
-                            <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="IgX-8N-drX">
-                                <rect key="frame" x="73" y="228" width="229" height="31"/>
-                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="topSliderChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="Qc3-UL-fF7"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S33-1M-FIQ">
-                                <rect key="frame" x="144" y="205" width="87" height="18"/>
-                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instrument Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0LX-LO-sl7">
-                                <rect key="frame" x="124" y="444" width="127.5" height="18"/>
-                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="STd-Eb-gfT">
+                                <rect key="frame" x="68" y="409" width="240" height="50"/>
+                                <subviews>
+                                    <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Huo-nd-fZb">
+                                        <rect key="frame" x="-2" y="0.0" width="244" height="26"/>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="bottomSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="zR5-un-U4v"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instrument Volume" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0LX-LO-sl7">
+                                        <rect key="frame" x="56.5" y="25" width="127.5" height="25"/>
+                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="2ss-nG-1lf"/>
+                                    <constraint firstAttribute="height" constant="50" id="bPi-eQ-dZd"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="LV4-6l-4gy">
+                                <rect key="frame" x="68" y="208" width="240" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Volume" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S33-1M-FIQ">
+                                        <rect key="frame" x="76.5" y="0.0" width="87" height="24"/>
+                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="IgX-8N-drX">
+                                        <rect key="frame" x="-2" y="26" width="244" height="25"/>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="topSliderChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="Qc3-UL-fF7"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Nej-tc-j9B"/>
+                                    <constraint firstAttribute="width" constant="240" id="hph-yt-3FR"/>
+                                </constraints>
+                            </stackView>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lnM-qq-Rpl">
                                 <rect key="frame" x="16" y="94" width="120" height="59"/>
                                 <gestureRecognizers/>
@@ -301,59 +350,65 @@
                         </subviews>
                         <color key="backgroundColor" red="0.17128013959390864" green="0.17128013959390864" blue="0.17128013959390864" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="STd-Eb-gfT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0i3-uk-wRL"/>
                             <constraint firstItem="fPV-S8-6Tg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1Po-Jz-jw9"/>
                             <constraint firstItem="B4e-Ll-ufu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="25" id="1YZ-op-vKy"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="F8l-Yh-bU5" secondAttribute="bottom" constant="25" id="2bB-X4-gKY"/>
                             <constraint firstItem="Vm8-Cf-2Yr" firstAttribute="top" secondItem="B4e-Ll-ufu" secondAttribute="bottom" constant="10" id="4Do-fE-B1q"/>
-                            <constraint firstItem="Huo-nd-fZb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4NV-ZL-rzc"/>
-                            <constraint firstItem="see-YL-ewK" firstAttribute="top" secondItem="IgX-8N-drX" secondAttribute="bottom" constant="8" id="5gs-Ty-4fo"/>
-                            <constraint firstItem="0LX-LO-sl7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7lC-Cq-SdH"/>
-                            <constraint firstItem="Huo-nd-fZb" firstAttribute="top" secondItem="see-YL-ewK" secondAttribute="bottom" constant="8" id="AsA-TD-u6a"/>
+                            <constraint firstItem="STd-Eb-gfT" firstAttribute="width" secondItem="LV4-6l-4gy" secondAttribute="width" id="4Z3-cx-yTC"/>
+                            <constraint firstItem="Huo-nd-fZb" firstAttribute="trailing" secondItem="fWK-He-EZ7" secondAttribute="trailing" id="BNE-NK-wJv"/>
                             <constraint firstItem="lnM-qq-Rpl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="C5P-9u-24d"/>
-                            <constraint firstItem="F8l-Yh-bU5" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="aZX-5n-uSK" secondAttribute="trailing" id="Gv9-DP-WUF"/>
+                            <constraint firstItem="F8l-Yh-bU5" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="aZX-5n-uSK" secondAttribute="trailing" placeholder="YES" id="Gv9-DP-WUF"/>
+                            <constraint firstItem="STd-Eb-gfT" firstAttribute="top" secondItem="see-YL-ewK" secondAttribute="bottom" constant="8" id="Mqy-mE-hks"/>
                             <constraint firstItem="see-YL-ewK" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="MvE-a1-FUD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Vm8-Cf-2Yr" secondAttribute="trailing" id="N9Q-BD-vPm"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vZj-vq-AoW" secondAttribute="bottom" constant="25" id="O5k-KF-6f4"/>
-                            <constraint firstItem="see-YL-ewK" firstAttribute="leading" secondItem="IgX-8N-drX" secondAttribute="leading" constant="-15" id="SeQ-jj-Imh"/>
+                            <constraint firstItem="see-YL-ewK" firstAttribute="top" secondItem="LV4-6l-4gy" secondAttribute="bottom" constant="8" id="QUt-7Q-s4i"/>
+                            <constraint firstItem="F8l-Yh-bU5" firstAttribute="centerX" secondItem="o4Y-By-vjI" secondAttribute="centerX" id="Ryx-jc-d6p"/>
                             <constraint firstItem="lnM-qq-Rpl" firstAttribute="top" secondItem="o4Y-By-vjI" secondAttribute="bottom" constant="10" id="T7a-im-cQj"/>
+                            <constraint firstItem="fWK-He-EZ7" firstAttribute="trailing" secondItem="IgX-8N-drX" secondAttribute="trailing" id="Tr1-D3-JUa"/>
                             <constraint firstItem="vZj-vq-AoW" firstAttribute="top" secondItem="gTC-gp-hAt" secondAttribute="bottom" constant="10" id="TwU-o1-QZE"/>
-                            <constraint firstItem="vZj-vq-AoW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fWK-He-EZ7" secondAttribute="leading" id="VLX-Mo-hgD"/>
+                            <constraint firstItem="vZj-vq-AoW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fWK-He-EZ7" secondAttribute="leading" placeholder="YES" id="VLX-Mo-hgD"/>
                             <constraint firstItem="o4Y-By-vjI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="25" id="WDK-zT-gv9"/>
                             <constraint firstItem="gTC-gp-hAt" firstAttribute="leading" secondItem="vZj-vq-AoW" secondAttribute="trailing" priority="999" id="Zv1-uy-FpS"/>
-                            <constraint firstItem="Huo-nd-fZb" firstAttribute="trailing" secondItem="IgX-8N-drX" secondAttribute="trailing" id="aml-Gc-Zsw"/>
-                            <constraint firstItem="F8l-Yh-bU5" firstAttribute="leading" secondItem="ckt-DR-IcZ" secondAttribute="trailing" priority="999" id="dx8-6x-vEQ"/>
-                            <constraint firstItem="S33-1M-FIQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dyd-RO-JdN"/>
-                            <constraint firstItem="see-YL-ewK" firstAttribute="trailing" secondItem="IgX-8N-drX" secondAttribute="trailing" constant="15" id="ed1-we-IsT"/>
-                            <constraint firstItem="IgX-8N-drX" firstAttribute="top" secondItem="S33-1M-FIQ" secondAttribute="bottom" constant="5" id="ewc-AB-Xv9"/>
-                            <constraint firstItem="Huo-nd-fZb" firstAttribute="leading" secondItem="IgX-8N-drX" secondAttribute="leading" id="gyZ-ys-QRZ"/>
+                            <constraint firstItem="vZj-vq-AoW" firstAttribute="centerX" secondItem="B4e-Ll-ufu" secondAttribute="centerX" id="fBD-zG-Rge"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gTC-gp-hAt" secondAttribute="trailing" id="hHd-nb-Mul"/>
+                            <constraint firstItem="Huo-nd-fZb" firstAttribute="leading" secondItem="aZX-5n-uSK" secondAttribute="leading" id="hm6-9l-UNI"/>
+                            <constraint firstItem="aZX-5n-uSK" firstAttribute="leading" secondItem="IgX-8N-drX" secondAttribute="leading" id="jpI-K0-GhC"/>
                             <constraint firstItem="ckt-DR-IcZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="lEp-Uv-Xzd"/>
-                            <constraint firstItem="0LX-LO-sl7" firstAttribute="top" secondItem="Huo-nd-fZb" secondAttribute="bottom" constant="5" id="m2m-G4-cbL"/>
+                            <constraint firstItem="LV4-6l-4gy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qRP-F6-pKu"/>
                             <constraint firstItem="Vm8-Cf-2Yr" firstAttribute="leading" secondItem="B4e-Ll-ufu" secondAttribute="trailing" priority="999" id="quD-Td-Oag"/>
                             <constraint firstItem="see-YL-ewK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rbf-X4-aEs"/>
                             <constraint firstItem="fPV-S8-6Tg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="sOV-pO-exQ"/>
                             <constraint firstItem="o4Y-By-vjI" firstAttribute="leading" secondItem="lnM-qq-Rpl" secondAttribute="trailing" priority="999" id="t2M-DP-RUe"/>
                             <constraint firstItem="F8l-Yh-bU5" firstAttribute="top" secondItem="ckt-DR-IcZ" secondAttribute="bottom" constant="10" id="vKM-IU-t3e"/>
-                            <constraint firstItem="B4e-Ll-ufu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fWK-He-EZ7" secondAttribute="leading" id="x5G-GC-C8T"/>
-                            <constraint firstItem="aZX-5n-uSK" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="o4Y-By-vjI" secondAttribute="trailing" id="xKH-bB-aj2"/>
+                            <constraint firstItem="B4e-Ll-ufu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fWK-He-EZ7" secondAttribute="leading" placeholder="YES" id="x5G-GC-C8T"/>
+                            <constraint firstItem="aZX-5n-uSK" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="o4Y-By-vjI" secondAttribute="trailing" placeholder="YES" id="xKH-bB-aj2"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bottomSlider" destination="Huo-nd-fZb" id="Vom-dX-d91"/>
+                        <outlet property="bottomSliderConstraint" destination="Mqy-mE-hks" id="6we-OT-oms"/>
+                        <outlet property="bottomSliderContainer" destination="STd-Eb-gfT" id="dKe-YY-DFu"/>
                         <outlet property="bottomSliderLabel" destination="0LX-LO-sl7" id="uag-Mo-aV9"/>
+                        <outlet property="bottomSliderTrailingConstraint" destination="BNE-NK-wJv" id="p9p-SW-qZf"/>
                         <outlet property="chooseMusicButton" destination="fWK-He-EZ7" id="hMM-aJ-yRd"/>
                         <outlet property="controlStackView" destination="yfI-xl-p3V" id="5wx-sE-ESP"/>
                         <outlet property="controlStackViewContainer" destination="see-YL-ewK" id="M7P-pj-yM4"/>
+                        <outlet property="editActionButtonsContainer" destination="IhZ-xN-v68" id="bb3-Cy-oYV"/>
+                        <outlet property="editButtonContainer" destination="guq-Gp-Ley" id="kbo-rT-wd4"/>
                         <outlet property="editSoundsButton" destination="aZX-5n-uSK" id="l4j-e5-NHN"/>
                         <outlet property="instructionsLabel" destination="4wh-eu-FZN" id="rdi-g7-34M"/>
                         <outlet property="leftFour" destination="F8l-Yh-bU5" id="aSX-Nr-eAN"/>
                         <outlet property="leftOne" destination="o4Y-By-vjI" id="LXo-xc-Xh3"/>
                         <outlet property="leftThree" destination="ckt-DR-IcZ" id="iHR-em-ANj"/>
                         <outlet property="leftTwo" destination="lnM-qq-Rpl" id="m4Q-X8-bQb"/>
+                        <outlet property="nowPlayingConstraint" destination="2Qk-3X-t5H" id="k9s-1n-f2G"/>
                         <outlet property="nowPlayingContainer" destination="q9z-Kv-net" id="UcS-Yf-4VY"/>
                         <outlet property="nowPlayingHeaderLabel" destination="N9e-Uy-5FZ" id="wzl-Ar-eHg"/>
                         <outlet property="nowPlayingLabel" destination="N4L-kL-zRB" id="Yd3-e7-sl5"/>
                         <outlet property="playButton" destination="1MY-ic-nzD" id="CQU-2m-z0c"/>
+                        <outlet property="playButtonContainer" destination="BJy-Ft-UDN" id="lBZ-t3-F4p"/>
                         <outlet property="restoreDefaultsButton" destination="oIN-A3-O8e" id="87Q-4c-asF"/>
                         <outlet property="rightFour" destination="vZj-vq-AoW" id="cdS-C8-W2j"/>
                         <outlet property="rightOne" destination="B4e-Ll-ufu" id="9TE-S2-3kZ"/>
@@ -362,7 +417,11 @@
                         <outlet property="saveButton" destination="X8Y-MK-nS8" id="Fw4-n5-Ui4"/>
                         <outlet property="settingsStackView" destination="fPV-S8-6Tg" id="YxV-gD-f35"/>
                         <outlet property="topSlider" destination="IgX-8N-drX" id="g9a-CM-V9d"/>
+                        <outlet property="topSliderConstraint" destination="QUt-7Q-s4i" id="Vfe-BB-DMB"/>
+                        <outlet property="topSliderContainer" destination="LV4-6l-4gy" id="kEX-dw-A4x"/>
                         <outlet property="topSliderLabel" destination="S33-1M-FIQ" id="Z05-Sz-cWM"/>
+                        <outlet property="topSliderTrailingConstraint" destination="Tr1-D3-JUa" id="cXD-Fy-xBJ"/>
+                        <outlet property="volumeButton" destination="IPG-Is-5Xp" id="J67-F8-fBY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -580,4 +639,7 @@
             <point key="canvasLocation" x="133.5832083958021" y="1061.5999999999999"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Icon-sound-file.png" width="1024" height="1024"/>
+    </resources>
 </document>

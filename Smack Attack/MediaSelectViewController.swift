@@ -18,7 +18,7 @@ class MediaSelectViewController: UITableViewController, MPMediaPickerControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        // Do any additional setup after loading the view, typically from a nib.
         self.chosenSongTitle = "Cancel"
         self.chosenSongArtist = "None"
         // Uncomment the following line to preserve selection between presentations

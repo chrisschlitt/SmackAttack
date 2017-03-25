@@ -23,6 +23,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     var musicVolume: Float = 0.5
     var soundEffectVolume: Float = 0.5
     var recorder = AVAudioRecorder()
+    var volumeHidden = false
+    var smallScreen = false
     
     /* Data Instance Variables */
     var showingEditView = false
@@ -35,43 +37,45 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var controlStackView: UIStackView!
     @IBOutlet weak var controlStackViewContainer: UIView!
     @IBOutlet weak var chooseMusicButton: UIButton!
+    @IBOutlet weak var playButtonContainer: UIView!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var editButtonContainer: UIStackView!
     @IBOutlet weak var nowPlayingContainer: UIView!
     @IBOutlet weak var nowPlayingLabel: UILabel!
     @IBOutlet weak var nowPlayingHeaderLabel: UILabel!
     @IBOutlet weak var editSoundsButton: UIButton!
     @IBOutlet weak var topSliderLabel: UILabel!
+    @IBOutlet weak var bottomSliderContainer: UIStackView!
     @IBOutlet weak var bottomSliderLabel: UILabel!
+    @IBOutlet weak var topSliderContainer: UIStackView!
     @IBOutlet weak var topSlider: UISlider!
     @IBOutlet weak var bottomSlider: UISlider!
     @IBOutlet weak var instructionsLabel: UILabel!
+    @IBOutlet weak var editActionButtonsContainer: UIStackView!
+    @IBOutlet weak var volumeButton: UIButton!
+    @IBOutlet weak var nowPlayingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topSliderConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomSliderConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomSliderTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topSliderTrailingConstraint: NSLayoutConstraint!
     
     /* Media Actions */
-    @IBAction func chooseMusicButtonPressed(_ sender: Any) {
-        print("This is now a segue")
-        /*
-        let mediaPicker = MPMediaPickerController(mediaTypes: .music)
-        mediaPicker.delegate = self
-        mediaPicker.allowsPickingMultipleItems = false
-        present(mediaPicker, animated: true, completion: {})
-        */
-    }
-    
     @IBAction func playButtonPressed(_ sender: Any) {
         if(!self.isPlaying){
             // Play
+            self.audioPlayer.volume = self.musicVolume
+            self.audioPlayer.play()
+            self.isPlaying = true
+            
             DispatchQueue.main.async {
-                self.audioPlayer.volume = self.musicVolume
-                self.audioPlayer.play()
-                self.isPlaying = true
                 self.playButton.setTitle("Pause", for: .normal)
                 print("Playing")
             }
         } else {
             // Pause
+            self.audioPlayer.pause()
+            self.isPlaying = false
             DispatchQueue.main.async {
-                self.audioPlayer.pause()
-                self.isPlaying = false
                 self.playButton.setTitle("Play", for: .normal)
                 print("Pausing")
             }
@@ -96,12 +100,13 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             }
             
         }
-        
-        /*
-        DispatchQueue.main.async {
-            (MPVolumeView().subviews.filter{NSStringFromClass($0.classForCoder) == "MPVolumeSlider"}.first as? UISlider)?.setValue(self.topSlider.value, animated: false)
+    }
+    @IBAction func volumeButtonPressed(_ sender: Any) {
+        if(self.volumeHidden){
+            self.showVolume()
+        } else {
+            self.hideVolume()
         }
-        */
     }
     
     
@@ -180,12 +185,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         // Update UI
         DispatchQueue.main.async {
+            self.topSliderContainer.isHidden = true
+            self.bottomSliderContainer.isHidden = true
             UIView.animate(withDuration: 0.35, animations: {
                 self.controlStackViewContainer.isHidden = true
-                self.topSlider.isHidden = true
-                self.bottomSlider.isHidden = true
-                self.topSliderLabel.isHidden = true
-                self.bottomSliderLabel.isHidden = true
                 self.settingsStackView.isHidden = false
                 
                 self.view.backgroundColor = UIColor.hexStringToUIColor(hex: "2662B5")
@@ -204,13 +207,14 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         // Update UI
         DispatchQueue.main.async {
+            if(!self.smallScreen){
+                self.topSliderContainer.isHidden = false
+                self.bottomSliderContainer.isHidden = false
+            }
+            
             UIView.animate(withDuration: 0.35, animations: {
             
                 self.controlStackViewContainer.isHidden = false
-                self.topSlider.isHidden = false
-                self.bottomSlider.isHidden = false
-                self.topSliderLabel.isHidden = false
-                self.bottomSliderLabel.isHidden = false
                 self.settingsStackView.isHidden = true
                 
                 self.view.backgroundColor = UIColor.hexStringToUIColor(hex: "2C2C2C")
@@ -478,17 +482,76 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         return .lightContent
     }
     
+    func hideVolume(){
+        self.volumeHidden = true
+        DispatchQueue.main.async {
+            self.topSliderContainer.isHidden = true
+            self.bottomSliderContainer.isHidden = true
+            self.editSoundsButton.isHidden = false
+            self.chooseMusicButton.isHidden = false
+            self.playButton.isHidden = false
+        }
+    }
+    
+    func showVolume(){
+        self.volumeHidden = false
+        DispatchQueue.main.async {
+            self.topSliderContainer.isHidden = false
+            self.bottomSliderContainer.isHidden = false
+            self.editSoundsButton.isHidden = true
+            self.chooseMusicButton.isHidden = true
+            self.playButton.isHidden = true
+        }
+    }
+    
     /* View Controller Load */
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // TODO: Use these to change UI for different screen sizes
+        // Determine screen size
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
         
-        
+        if((screenWidth * screenHeight) < 200000.0){
+            self.smallScreen = true
+            // Small Screen, Hide Volume
+            self.hideVolume()
+            DispatchQueue.main.async {
+                // Show Volume Button
+                self.topSliderContainer.removeArrangedSubview(self.topSliderLabel)
+                self.topSliderContainer.addArrangedSubview(self.topSliderLabel)
+                self.topSliderContainer.spacing = 8
+                self.bottomSliderContainer.spacing = 8
+                self.topSliderContainer.distribution = UIStackViewDistribution.fillEqually
+                self.bottomSliderContainer.distribution = .fillEqually
+                self.topSliderLabel.text = "Music"
+                self.bottomSliderLabel.text = "Instruments"
+                self.editActionButtonsContainer.axis = UILayoutConstraintAxis.horizontal
+                self.editActionButtonsContainer.spacing = 8
+                self.volumeButton.isHidden = false
+                self.topSliderConstraint.constant = -90
+                self.bottomSliderConstraint.constant = -55
+                self.topSliderContainer.axis = UILayoutConstraintAxis.horizontal
+                self.bottomSliderContainer.axis = UILayoutConstraintAxis.horizontal
+                self.topSliderTrailingConstraint.isActive = false
+                self.bottomSliderTrailingConstraint.isActive = false
+            }
+        } else {
+            // Larger Screen, Show Volume
+            DispatchQueue.main.async {
+                self.nowPlayingConstraint.constant = 0
+                self.volumeButton.isHidden = true
+                self.topSliderConstraint.constant = 8
+                self.bottomSliderConstraint.constant = 8
+                self.topSliderContainer.axis = UILayoutConstraintAxis.vertical
+                self.bottomSliderContainer.axis = UILayoutConstraintAxis.vertical
+                self.editActionButtonsContainer.removeArrangedSubview(self.saveButton)
+                self.editActionButtonsContainer.addArrangedSubview(self.saveButton)
+            }
+            
+        }
         
         // Set Delegates
         appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -507,6 +570,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             self.nowPlayingContainer.layer.cornerRadius = 2
             self.nowPlayingContainer.layer.borderColor = UIColor.hexStringToUIColor(hex: "7B202B").cgColor
             self.nowPlayingContainer.layer.borderWidth = 1
+            let leftTopButtonsConstraint = NSLayoutConstraint(item: self.leftOne, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.lessThanOrEqual, toItem: self.controlStackViewContainer, attribute: NSLayoutAttribute.centerX, multiplier: 1.0, constant: -5.0)
+            let rightTopButtonsConstraint = NSLayoutConstraint(item: self.rightOne, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.greaterThanOrEqual, toItem: self.controlStackViewContainer, attribute: NSLayoutAttribute.centerX, multiplier: 1.0, constant: 5.0)
+            NSLayoutConstraint.activate([leftTopButtonsConstraint, rightTopButtonsConstraint])
             
             // Setup Edit UI
             self.restoreDefaultsButton.setTitle("Restore Defaults", for: .normal)

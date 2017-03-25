@@ -29,6 +29,7 @@
 		499B310A1E8621EF00CF5DDF /* smack_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B31081E8621EF00CF5DDF /* smack_logo.png */; };
 		499B310E1E86F46300CF5DDF /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 499B310C1E86F46300CF5DDF /* Lato-Black.ttf */; };
 		499B310F1E86F46300CF5DDF /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 499B310D1E86F46300CF5DDF /* Lato-Bold.ttf */; };
+		499B31121E8717CD00CF5DDF /* Icon-sound-file.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B31111E8717CD00CF5DDF /* Icon-sound-file.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		499B31081E8621EF00CF5DDF /* smack_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smack_logo.png; sourceTree = "<group>"; };
 		499B310C1E86F46300CF5DDF /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
 		499B310D1E86F46300CF5DDF /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		499B31111E8717CD00CF5DDF /* Icon-sound-file.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-sound-file.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			children = (
 				499B31071E8621EF00CF5DDF /* smack_logo_small.png */,
 				499B31081E8621EF00CF5DDF /* smack_logo.png */,
+				499B31111E8717CD00CF5DDF /* Icon-sound-file.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				499B31061E861A7800CF5DDF /* Block.m4a in Resources */,
 				4933720C1E848DA4006C2D30 /* Assets.xcassets in Resources */,
 				499B310F1E86F46300CF5DDF /* Lato-Bold.ttf in Resources */,
+				499B31121E8717CD00CF5DDF /* Icon-sound-file.png in Resources */,
 				491706F11E84CC0500AAB76F /* KickDrum.m4a in Resources */,
 				491706FE1E84D66600AAB76F /* Cowbell.m4a in Resources */,
 				491707001E84D6B900AAB76F /* Splash.m4a in Resources */,
