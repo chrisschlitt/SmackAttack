@@ -9,6 +9,14 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Black.ttf">
+            <string>Lato-Black</string>
+        </array>
+        <array key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -22,56 +30,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on a button to change the sound effect. Tap and hold on a button to choose from a list" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wh-eu-FZN">
-                                <rect key="frame" x="228" y="117" width="210" height="140"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="140" id="N4W-9z-2cK"/>
-                                    <constraint firstAttribute="width" constant="210" id="pu0-gY-4cF"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8Y-MK-nS8">
-                                <rect key="frame" x="306" y="257" width="55" height="28"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
-                                <state key="normal" title="Save"/>
-                                <connections>
-                                    <action selector="saveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8J9-8w-i3q"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oIN-A3-O8e">
-                                <rect key="frame" x="264" y="297" width="139" height="28"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
-                                <state key="normal" title="Restore Defaults"/>
-                                <connections>
-                                    <action selector="restoreDefaultsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="615-57-54N"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yfI-xl-p3V">
-                                <rect key="frame" x="222" y="133" width="224" height="110"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fPV-S8-6Tg">
+                                <rect key="frame" x="228.5" y="86.5" width="210" height="202"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a Song" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4L-kL-zRB">
-                                        <rect key="frame" x="54" y="0.0" width="116.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on a button to change the sound effect. Tap and hold on a button to choose from a list" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wh-eu-FZN">
+                                        <rect key="frame" x="0.0" y="0.0" width="210" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="N4W-9z-2cK"/>
+                                            <constraint firstAttribute="width" constant="210" id="pu0-gY-4cF"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="guq-Gp-Ley">
-                                        <rect key="frame" x="0.0" y="30.5" width="224" height="38"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X8Y-MK-nS8">
+                                        <rect key="frame" x="74" y="130" width="62" height="31"/>
+                                        <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="17"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
+                                        <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="saveButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8J9-8w-i3q"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oIN-A3-O8e">
+                                        <rect key="frame" x="30.5" y="171" width="149" height="31"/>
+                                        <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="17"/>
+                                        <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
+                                        <state key="normal" title="Restore Defaults"/>
+                                        <connections>
+                                            <action selector="restoreDefaultsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="615-57-54N"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yfI-xl-p3V">
+                                <rect key="frame" x="214" y="133" width="240" height="110"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Choose a Song" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4L-kL-zRB">
+                                        <rect key="frame" x="64" y="0.0" width="112" height="18"/>
+                                        <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="guq-Gp-Ley">
+                                        <rect key="frame" x="2" y="28" width="236" height="40"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZX-5n-uSK">
-                                                <rect key="frame" x="0.0" y="0.0" width="102" height="38"/>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZX-5n-uSK">
+                                                <rect key="frame" x="0.0" y="0.0" width="113" height="40"/>
+                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                                 <state key="normal" title="Edit Sounds"/>
                                                 <connections>
                                                     <action selector="editSoundsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mUl-Ke-AxU"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWK-He-EZ7">
-                                                <rect key="frame" x="112" y="0.0" width="112" height="38"/>
+                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWK-He-EZ7">
+                                                <rect key="frame" x="123" y="0.0" width="113" height="40"/>
+                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                                 <state key="normal" title="Choose Song"/>
                                                 <connections>
@@ -81,8 +96,9 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1MY-ic-nzD">
-                                        <rect key="frame" x="0.0" y="78.5" width="224" height="31.5"/>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1MY-ic-nzD">
+                                        <rect key="frame" x="0.0" y="78" width="240" height="32"/>
+                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
                                         <state key="normal" title="Play"/>
                                         <connections>
                                             <action selector="playButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cVY-eM-is3"/>
@@ -90,7 +106,7 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="224" id="8dk-UO-Y2J"/>
+                                    <constraint firstAttribute="width" constant="240" id="8dk-UO-Y2J"/>
                                     <constraint firstAttribute="trailing" secondItem="1MY-ic-nzD" secondAttribute="trailing" id="93v-f3-5qg"/>
                                     <constraint firstAttribute="height" constant="110" id="AMX-tr-yY2"/>
                                     <constraint firstItem="guq-Gp-Ley" firstAttribute="centerX" secondItem="yfI-xl-p3V" secondAttribute="centerX" id="TFJ-M1-7dh"/>
@@ -99,148 +115,175 @@
                                 </constraints>
                             </stackView>
                             <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Huo-nd-fZb">
-                                <rect key="frame" x="220" y="258" width="227" height="31"/>
+                                <rect key="frame" x="212" y="258" width="244" height="31"/>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="bottomSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="zR5-un-U4v"/>
                                 </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="IgX-8N-drX">
-                                <rect key="frame" x="220" y="83" width="227" height="31"/>
+                                <rect key="frame" x="212" y="83" width="244" height="31"/>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="topSliderChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="Qc3-UL-fF7"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S33-1M-FIQ">
-                                <rect key="frame" x="283" y="57.5" width="101.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="290.5" y="60" width="87" height="18"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instrument Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0LX-LO-sl7">
-                                <rect key="frame" x="261.5" y="293" width="144.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="270.5" y="293" width="127.5" height="18"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lnM-qq-Rpl">
-                                <rect key="frame" x="30" y="83" width="110" height="58"/>
+                                <rect key="frame" x="30" y="94" width="120" height="59"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="c5j-gk-A5G"/>
-                                    <constraint firstAttribute="width" constant="110" id="s9N-0a-QrF"/>
+                                    <constraint firstAttribute="width" constant="120" id="s9N-0a-QrF"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="15"/>
                                 <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                                 <state key="normal" title="Tom"/>
                                 <connections>
+                                    <action selector="soundEffectButtonEditPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MjV-mo-TN2"/>
                                     <action selector="soundEffectButtonPressed:" destination="BYZ-38-t0r" eventType="touchDown" id="G4p-o4-y7W"/>
+                                    <outletCollection property="gestureRecognizers" destination="c5Q-XD-gfn" appends="YES" id="ar5-ek-1nZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ckt-DR-IcZ">
-                                <rect key="frame" x="30" y="234" width="110" height="58"/>
+                                <rect key="frame" x="30" y="222" width="120" height="59"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="DEp-xg-DNV"/>
+                                    <constraint firstAttribute="width" constant="120" id="DEp-xg-DNV"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="15"/>
                                 <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                                 <state key="normal" title="Crash"/>
                                 <connections>
+                                    <action selector="soundEffectButtonEditPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n4o-j9-EpL"/>
                                     <action selector="soundEffectButtonPressed:" destination="BYZ-38-t0r" eventType="touchDown" id="Lx8-8H-Lf1"/>
+                                    <outletCollection property="gestureRecognizers" destination="a7e-Kx-y2c" appends="YES" id="wlb-Ez-UYI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4e-Ll-ufu">
-                                <rect key="frame" x="417" y="15" width="110" height="58"/>
+                                <rect key="frame" x="397" y="25" width="120" height="59"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="R7k-Ok-WNs"/>
+                                    <constraint firstAttribute="width" constant="120" id="R7k-Ok-WNs"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="15"/>
                                 <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                                 <state key="normal" title="Snare"/>
                                 <connections>
+                                    <action selector="soundEffectButtonEditPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y4X-xl-XiF"/>
                                     <action selector="soundEffectButtonPressed:" destination="BYZ-38-t0r" eventType="touchDown" id="V2i-Cp-OlM"/>
+                                    <outletCollection property="gestureRecognizers" destination="O6M-NE-yYa" appends="YES" id="gLj-P0-bgb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vm8-Cf-2Yr">
-                                <rect key="frame" x="527" y="83" width="110" height="58"/>
+                                <rect key="frame" x="517" y="94" width="120" height="59"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="3eK-FO-4SV"/>
+                                    <constraint firstAttribute="width" constant="120" id="3eK-FO-4SV"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="15"/>
                                 <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                                 <state key="normal" title="HighHat"/>
                                 <connections>
+                                    <action selector="soundEffectButtonEditPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="owf-Hs-MBx"/>
                                     <action selector="soundEffectButtonPressed:" destination="BYZ-38-t0r" eventType="touchDown" id="CU3-KB-pZX"/>
+                                    <outletCollection property="gestureRecognizers" destination="Rpv-kb-LqK" appends="YES" id="uNd-mw-roM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTC-gp-hAt">
-                                <rect key="frame" x="527" y="234" width="110" height="58"/>
+                                <rect key="frame" x="517" y="222" width="120" height="59"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="kyh-wb-gLP"/>
+                                    <constraint firstAttribute="width" constant="120" id="kyh-wb-gLP"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="15"/>
                                 <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                                 <state key="normal" title="Ride"/>
                                 <connections>
+                                    <action selector="soundEffectButtonEditPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Tg-Xk-hiQ"/>
                                     <action selector="soundEffectButtonPressed:" destination="BYZ-38-t0r" eventType="touchDown" id="6me-hm-5QJ"/>
+                                    <outletCollection property="gestureRecognizers" destination="3ZH-sb-Jvk" appends="YES" id="g3W-KJ-ZGq"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4Y-By-vjI">
-                                <rect key="frame" x="140" y="15" width="110" height="58"/>
+                                <rect key="frame" x="150" y="25" width="120" height="59"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="ZkZ-KB-OUa"/>
+                                    <constraint firstAttribute="width" constant="120" id="ZkZ-KB-OUa"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="15"/>
                                 <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                                 <state key="normal" title="KickDrum"/>
                                 <connections>
+                                    <action selector="soundEffectButtonEditPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="844-Nw-vHE"/>
                                     <action selector="soundEffectButtonPressed:" destination="BYZ-38-t0r" eventType="touchDown" id="Lou-9b-ipt"/>
+                                    <outletCollection property="gestureRecognizers" destination="IDL-fT-EsL" appends="YES" id="6Us-S2-FOc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZj-vq-AoW">
-                                <rect key="frame" x="417" y="302" width="110" height="58"/>
+                                <rect key="frame" x="397" y="291" width="120" height="59"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="egO-G4-uoK"/>
+                                    <constraint firstAttribute="width" constant="120" id="egO-G4-uoK"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="15"/>
                                 <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                                 <state key="normal" title="Cowbell"/>
                                 <connections>
+                                    <action selector="soundEffectButtonEditPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MVp-JM-kt5"/>
                                     <action selector="soundEffectButtonPressed:" destination="BYZ-38-t0r" eventType="touchDown" id="PBT-s3-sxl"/>
+                                    <outletCollection property="gestureRecognizers" destination="uxf-Oz-xja" appends="YES" id="JT1-af-3In"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F8l-Yh-bU5">
-                                <rect key="frame" x="140" y="302" width="110" height="58"/>
+                                <rect key="frame" x="150" y="291" width="120" height="59"/>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="ZQJ-lS-esL"/>
+                                    <constraint firstAttribute="width" constant="120" id="ZQJ-lS-esL"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="15"/>
                                 <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                                 <state key="normal" title="Splash"/>
                                 <connections>
+                                    <action selector="soundEffectButtonEditPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="isq-it-Bep"/>
                                     <action selector="soundEffectButtonPressed:" destination="BYZ-38-t0r" eventType="touchDown" id="Ims-nt-tfS"/>
+                                    <outletCollection property="gestureRecognizers" destination="4AQ-mj-4ms" appends="YES" id="xra-CG-wui"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.36078431372549019" green="0.36862745098039218" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.17128013959390864" green="0.17128013959390864" blue="0.17128013959390864" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="fPV-S8-6Tg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1Po-Jz-jw9"/>
                             <constraint firstItem="Huo-nd-fZb" firstAttribute="top" secondItem="yfI-xl-p3V" secondAttribute="bottom" constant="15" id="1XV-pr-IL9"/>
-                            <constraint firstItem="B4e-Ll-ufu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="15" id="1YZ-op-vKy"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="F8l-Yh-bU5" secondAttribute="bottom" constant="15" id="2bB-X4-gKY"/>
+                            <constraint firstItem="B4e-Ll-ufu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="25" id="1YZ-op-vKy"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="F8l-Yh-bU5" secondAttribute="bottom" constant="25" id="2bB-X4-gKY"/>
                             <constraint firstItem="Vm8-Cf-2Yr" firstAttribute="top" secondItem="B4e-Ll-ufu" secondAttribute="bottom" constant="10" id="4Do-fE-B1q"/>
                             <constraint firstItem="Huo-nd-fZb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4NV-ZL-rzc"/>
                             <constraint firstItem="yfI-xl-p3V" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="72Y-mx-C2b"/>
-                            <constraint firstItem="oIN-A3-O8e" firstAttribute="top" secondItem="X8Y-MK-nS8" secondAttribute="bottom" constant="12" id="7gi-fT-Y8i"/>
                             <constraint firstItem="0LX-LO-sl7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7lC-Cq-SdH"/>
                             <constraint firstItem="lnM-qq-Rpl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="C5P-9u-24d"/>
                             <constraint firstItem="vZj-vq-AoW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="F8l-Yh-bU5" secondAttribute="trailing" constant="10" id="C5s-Xs-ghH"/>
                             <constraint firstItem="yfI-xl-p3V" firstAttribute="top" secondItem="IgX-8N-drX" secondAttribute="bottom" constant="20" id="Fwb-HQ-Q1l"/>
-                            <constraint firstItem="X8Y-MK-nS8" firstAttribute="top" secondItem="4wh-eu-FZN" secondAttribute="bottom" id="GWx-pL-1eP"/>
-                            <constraint firstItem="4wh-eu-FZN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Lh6-M9-3RL"/>
-                            <constraint firstItem="oIN-A3-O8e" firstAttribute="centerX" secondItem="X8Y-MK-nS8" secondAttribute="centerX" id="M04-8x-HKi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Vm8-Cf-2Yr" secondAttribute="trailing" constant="10" id="N9Q-BD-vPm"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vZj-vq-AoW" secondAttribute="bottom" constant="15" id="O5k-KF-6f4"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vZj-vq-AoW" secondAttribute="bottom" constant="25" id="O5k-KF-6f4"/>
                             <constraint firstItem="lnM-qq-Rpl" firstAttribute="top" secondItem="o4Y-By-vjI" secondAttribute="bottom" constant="10" id="T7a-im-cQj"/>
                             <constraint firstItem="vZj-vq-AoW" firstAttribute="top" secondItem="gTC-gp-hAt" secondAttribute="bottom" constant="10" id="TwU-o1-QZE"/>
-                            <constraint firstItem="o4Y-By-vjI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="15" id="WDK-zT-gv9"/>
+                            <constraint firstItem="o4Y-By-vjI" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="25" id="WDK-zT-gv9"/>
                             <constraint firstItem="Huo-nd-fZb" firstAttribute="leading" secondItem="IgX-8N-drX" secondAttribute="leading" id="YmK-gD-wSE"/>
                             <constraint firstItem="gTC-gp-hAt" firstAttribute="leading" secondItem="vZj-vq-AoW" secondAttribute="trailing" priority="999" id="Zv1-uy-FpS"/>
                             <constraint firstItem="F8l-Yh-bU5" firstAttribute="leading" secondItem="ckt-DR-IcZ" secondAttribute="trailing" priority="999" id="dx8-6x-vEQ"/>
                             <constraint firstItem="IgX-8N-drX" firstAttribute="top" secondItem="S33-1M-FIQ" secondAttribute="bottom" constant="5" id="ewc-AB-Xv9"/>
                             <constraint firstItem="B4e-Ll-ufu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="o4Y-By-vjI" secondAttribute="trailing" constant="10" id="fSj-sX-fdn"/>
-                            <constraint firstItem="X8Y-MK-nS8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gio-eW-dmN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gTC-gp-hAt" secondAttribute="trailing" constant="10" id="hHd-nb-Mul"/>
                             <constraint firstItem="Huo-nd-fZb" firstAttribute="leading" secondItem="yfI-xl-p3V" secondAttribute="leading" id="jmE-7U-mvB"/>
                             <constraint firstItem="yfI-xl-p3V" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="kDk-e3-laU"/>
@@ -248,10 +291,10 @@
                             <constraint firstItem="0LX-LO-sl7" firstAttribute="top" secondItem="Huo-nd-fZb" secondAttribute="bottom" constant="5" id="m2m-G4-cbL"/>
                             <constraint firstItem="Huo-nd-fZb" firstAttribute="centerX" secondItem="S33-1M-FIQ" secondAttribute="centerX" id="ovI-Eb-X9l"/>
                             <constraint firstItem="Vm8-Cf-2Yr" firstAttribute="leading" secondItem="B4e-Ll-ufu" secondAttribute="trailing" priority="999" id="quD-Td-Oag"/>
+                            <constraint firstItem="fPV-S8-6Tg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="sOV-pO-exQ"/>
                             <constraint firstItem="o4Y-By-vjI" firstAttribute="leading" secondItem="lnM-qq-Rpl" secondAttribute="trailing" priority="999" id="t2M-DP-RUe"/>
                             <constraint firstItem="Huo-nd-fZb" firstAttribute="trailing" secondItem="IgX-8N-drX" secondAttribute="trailing" id="urX-Ky-ull"/>
                             <constraint firstItem="F8l-Yh-bU5" firstAttribute="top" secondItem="ckt-DR-IcZ" secondAttribute="bottom" constant="10" id="vKM-IU-t3e"/>
-                            <constraint firstItem="4wh-eu-FZN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wak-bK-CYp"/>
                         </constraints>
                     </view>
                     <connections>
@@ -273,15 +316,56 @@
                         <outlet property="rightThree" destination="gTC-gp-hAt" id="aEe-vt-vLC"/>
                         <outlet property="rightTwo" destination="Vm8-Cf-2Yr" id="53U-Dn-gth"/>
                         <outlet property="saveButton" destination="X8Y-MK-nS8" id="Fw4-n5-Ui4"/>
+                        <outlet property="settingsStackView" destination="fPV-S8-6Tg" id="YxV-gD-f35"/>
                         <outlet property="topSlider" destination="IgX-8N-drX" id="g9a-CM-V9d"/>
                         <outlet property="topSliderLabel" destination="S33-1M-FIQ" id="Z05-Sz-cWM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="IDL-fT-EsL">
+                    <connections>
+                        <action selector="soundEffectButtonLongPressed:" destination="BYZ-38-t0r" id="epY-AQ-YYk"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="c5Q-XD-gfn">
+                    <connections>
+                        <action selector="soundEffectButtonLongPressed:" destination="BYZ-38-t0r" id="1WD-DL-e6o"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="a7e-Kx-y2c">
+                    <connections>
+                        <action selector="soundEffectButtonLongPressed:" destination="BYZ-38-t0r" id="xBn-Tz-bcN"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="4AQ-mj-4ms">
+                    <connections>
+                        <action selector="soundEffectButtonLongPressed:" destination="BYZ-38-t0r" id="1La-EC-5t1"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="O6M-NE-yYa">
+                    <connections>
+                        <action selector="soundEffectButtonLongPressed:" destination="BYZ-38-t0r" id="I5F-mw-TQy"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="Rpv-kb-LqK">
+                    <connections>
+                        <action selector="soundEffectButtonLongPressed:" destination="BYZ-38-t0r" id="9Yk-Pr-hcf"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="3ZH-sb-Jvk">
+                    <connections>
+                        <action selector="soundEffectButtonLongPressed:" destination="BYZ-38-t0r" id="W1I-g6-HRQ"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="uxf-Oz-xja">
+                    <connections>
+                        <action selector="soundEffectButtonLongPressed:" destination="BYZ-38-t0r" id="vIN-Dk-NGn"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="133.5832083958021" y="61.600000000000001"/>
         </scene>
-        <!--Media Select View Controller-->
+        <!--Pick a Song-->
         <scene sceneID="8WG-nJ-mA6">
             <objects>
                 <tableViewController id="Ald-EH-OUm" customClass="MediaSelectViewController" customModule="Smack_Attack" customModuleProvider="target" sceneMemberID="viewController">
@@ -293,10 +377,10 @@
                             <tableViewSection headerTitle="Pick a Song" id="E0u-bL-xa2">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="QYn-6Q-vzw">
-                                        <rect key="frame" x="0.0" y="55.5" width="667" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QYn-6Q-vzw" id="k6w-P1-8wL">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Music Library..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tn9-3x-iwV">
@@ -313,10 +397,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="87V-xk-U6a">
-                                        <rect key="frame" x="0.0" y="99.5" width="667" height="44"/>
+                                        <rect key="frame" x="0.0" y="100" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="87V-xk-U6a" id="YgE-tZ-clk">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Internet..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="em0-g2-Yev">
@@ -333,10 +417,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="fBu-5c-NXN">
-                                        <rect key="frame" x="0.0" y="143.5" width="667" height="44"/>
+                                        <rect key="frame" x="0.0" y="144" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fBu-5c-NXN" id="Tnm-p7-xcd">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overdub a Previously Saved File..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mdw-zZ-srq">
@@ -353,10 +437,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="8CD-9m-1NV">
-                                        <rect key="frame" x="0.0" y="187.5" width="667" height="44"/>
+                                        <rect key="frame" x="0.0" y="188" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8CD-9m-1NV" id="YER-OB-hCD">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overdub from the Internet..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XD7-yt-jWl">
@@ -373,10 +457,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3pk-2M-DfI">
-                                        <rect key="frame" x="0.0" y="231.5" width="667" height="44"/>
+                                        <rect key="frame" x="0.0" y="232" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3pk-2M-DfI" id="4tq-8N-ICl">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song from Another iPhone..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbE-04-JlV">
@@ -393,10 +477,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="TP4-QR-Hzi">
-                                        <rect key="frame" x="0.0" y="275.5" width="667" height="44"/>
+                                        <rect key="frame" x="0.0" y="276" width="667" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TP4-QR-Hzi" id="eJ7-BJ-0hc">
-                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None (Solo Sound Effects)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zpk-E0-Rwi">
@@ -420,7 +504,7 @@
                             <outlet property="delegate" destination="Ald-EH-OUm" id="VJb-Qw-cu8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="RJH-0W-1aZ">
+                    <navigationItem key="navigationItem" title="Pick a Song" id="RJH-0W-1aZ">
                         <barButtonItem key="leftBarButtonItem" title="Close" id="F2H-n0-6II">
                             <connections>
                                 <segue destination="ToD-Ll-qtq" kind="unwind" identifier="unwindToMenu" unwindAction="unwindToMenuWithSegue:" id="Fov-Iu-TRR"/>
@@ -438,7 +522,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="d3x-92-xqh" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="N06-w2-LIn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="N06-w2-LIn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

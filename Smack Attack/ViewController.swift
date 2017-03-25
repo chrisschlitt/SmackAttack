@@ -11,12 +11,13 @@ import MediaPlayer
 import AVFoundation
 import CoreData
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     /* Media Resources */
     var currentSongTitle: String!
     var currentSongURL: URL!
     var audioPlayer = AVPlayer()
+    var editSoundEffect = SoundEffect()
     var isPlaying = false
     var musicVolume: Float = 0.5
     var soundEffectVolume: Float = 0.5
@@ -25,6 +26,8 @@ class ViewController: UIViewController {
     var showingEditView = false
     var appDelegate: AppDelegate!
     var context: NSManagedObjectContext!
+    var editingItemTag = 0
+    var toolBar = UIToolbar()
     
     /* Media References */
     @IBOutlet weak var controlStackView: UIStackView!
@@ -117,14 +120,31 @@ class ViewController: UIViewController {
             self.soundEffectPlayers[sender.tag] = SoundEffect(sound: SoundEffect.getSoundEffects()[buttonSettings[sender.tag]])
             self.soundEffectPlayers[sender.tag].play()
             self.soundEffectPlayers[sender.tag].player.volume = self.soundEffectVolume
-        } else {
+        }
+    }
+    
+    @IBAction func soundEffectButtonEditPressed(_ sender: UIButton){
+        if(self.showingEditView){
             // Change Sound Effect
-            let newInstrument = self.getAvailableInstrument()
+            let newInstrument = self.getAvailableInstrument(buttonSettings[sender.tag])
             sender.setTitle(SoundEffect.getEffect(newInstrument), for: .normal)
             self.saveSetting(position: sender.tag, instrument: newInstrument)
+            
+            self.editSoundEffect = SoundEffect(sound: SoundEffect.getEffect(newInstrument))
+            self.editSoundEffect.play()
         }
-        
+    
     }
+    
+    @IBAction func soundEffectButtonLongPressed(_ sender: UILongPressGestureRecognizer) {
+        if(sender.state == UIGestureRecognizerState.began && self.showingEditView){
+            // Show picker
+            self.editingItemTag = (sender.view?.tag)!
+            self.showpicker()
+        }
+    }
+    
+    
     
     /* Sound Button Data */
     var buttonSettings = [Int]()
@@ -146,6 +166,9 @@ class ViewController: UIViewController {
     }
     
     
+    /* Edit Resources */
+    var pickerView = UIPickerView()
+    
     /* Edit Methods */
     func showEditScreen(){
         self.showingEditView = true
@@ -158,9 +181,7 @@ class ViewController: UIViewController {
                 self.bottomSlider.isHidden = true
                 self.topSliderLabel.isHidden = true
                 self.bottomSliderLabel.isHidden = true
-                self.instructionsLabel.isHidden = false
-                self.saveButton.isHidden = false
-                self.restoreDefaultsButton.isHidden = false
+                self.settingsStackView.isHidden = false
                 
                 self.view.backgroundColor = UIColor.hexStringToUIColor(hex: "2662B5")
                 
@@ -176,41 +197,99 @@ class ViewController: UIViewController {
         self.showingEditView = false
         
         // Update UI
-        UIView.animate(withDuration: 0.35, animations: {
-            DispatchQueue.main.async {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.35, animations: {
+            
                 self.controlStackView.isHidden = false
                 self.topSlider.isHidden = false
                 self.bottomSlider.isHidden = false
                 self.topSliderLabel.isHidden = false
                 self.bottomSliderLabel.isHidden = false
-                self.instructionsLabel.isHidden = true
-                self.saveButton.isHidden = true
-                self.restoreDefaultsButton.isHidden = true
+                self.settingsStackView.isHidden = true
                 
-                self.view.backgroundColor = UIColor.hexStringToUIColor(hex: "5C5E66")
+                self.view.backgroundColor = UIColor.hexStringToUIColor(hex: "2C2C2C")
                 
                 for button in self.buttons {
-                    button.backgroundColor = UIColor.lightGray
+                    button.backgroundColor = UIColor.hexStringToUIColor(hex: "5C5E66")
                     button.layer.borderColor = UIColor.darkGray.cgColor
                     
                 }
-            }
-        })
+            })
+        }
+    }
+    
+    func showpicker(){
+        DispatchQueue.main.async {
+            self.pickerView.reloadAllComponents()
+            self.pickerView.isHidden = false
+            self.toolBar.isHidden = false
+            self.pickerView.selectedRow(inComponent: 0)
+        }
+    }
+    
+    func hidePicker(){
+        DispatchQueue.main.async {
+            self.pickerView.selectRow(0, inComponent: 0, animated: false)
+            self.pickerView.isHidden = true
+            self.toolBar.isHidden = true
+        }
+    }
+    
+    func savePicker(){
+        DispatchQueue.main.async {
+            let newInstrument = self.getAvailableInstruments(self.editingItemTag)[self.pickerView.selectedRow(inComponent: 0)]
+            self.saveSetting(position: self.editingItemTag, instrument: newInstrument)
+            self.buttons[self.editingItemTag].setTitle(SoundEffect.getEffect(self.buttonSettings[self.editingItemTag]), for: .normal)
+            self.hidePicker()
+        }
         
         
     }
     
+    
+    /* Settings Resources */
+    @IBOutlet weak var settingsStackView: UIStackView!
+    
+    
     /* Settings Methods */
-    func getAvailableInstrument() -> Int {
+    func getAvailableInstrument(_ start: Int) -> Int {
         // Get first available instrument
+        var index = start + 1
         let installedInstruments = SoundEffect.getSoundEffects()
-        for i in 0..<installedInstruments.count {
-            if(!self.buttonSettings.contains(i)){
-                return i
+        for _ in 0..<installedInstruments.count {
+            if(index >= installedInstruments.count){
+                index = 0
             }
+            if(!self.buttonSettings.contains(index)){
+                return index
+            }
+            index += 1
+            
         }
         // Return the first non default instrument if failed
         return 8
+    }
+    
+    func getAvailableInstruments(_ start: Int) -> [Int] {
+        // Get first available instrument
+        var index = start + 1
+        let installedInstruments = SoundEffect.getSoundEffects()
+        var availableInstruments = [Int]()
+        if(self.buttonSettings.count > start){
+            availableInstruments.append(self.buttonSettings[start])
+        }
+        for _ in 0..<installedInstruments.count {
+            if(index >= installedInstruments.count){
+                index = 0
+            }
+            if(!self.buttonSettings.contains(index)){
+                availableInstruments.append(index)
+            }
+            index += 1
+            
+        }
+        // Return the first non default instrument if failed
+        return availableInstruments
     }
     
     func saveSetting(position: Int, instrument: Int) {
@@ -250,6 +329,7 @@ class ViewController: UIViewController {
         
         // Set New Setting in Memeory
         self.buttonSettings[position] = instrument
+        // print("Saved [\(position)] = \(instrument)")
     }
     
     func loadSettings(resetToDefault: Bool) -> [Int]{
@@ -264,10 +344,12 @@ class ViewController: UIViewController {
         var settings = SoundEffect.defaults()
         do {
             let results = try context.fetch(request)
+            // print("Loading \(results.count) settings")
             if(results.count > 0){
                 for result in results as! [NSManagedObject] {
                     let position = result.value(forKey: "position") as! Int
                     let instrument = result.value(forKey: "instrument") as! Int
+                    // print("Loaded [\(position)] = \(instrument)")
                     settings[position] = instrument
                 }
             } else {
@@ -280,14 +362,50 @@ class ViewController: UIViewController {
         
         // Save initial settings if necessary
         if(saveInitialSettings){
-            self.buttonSettings = settings
+            // print("Saving initial settings")
+            self.buttonSettings = SoundEffect.defaults()
+            settings = self.buttonSettings
             for i in 0..<settings.count {
-                self.saveSetting(position: i, instrument: settings[i])
+                self.saveSetting(position: i, instrument: buttonSettings[i])
             }
+            
         }
         
         return settings
     }
+    
+    /* PickerView Methods */
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.getAvailableInstruments(editingItemTag).count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 36.0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        // Play a demo sound while scrolling through the instruments
+        let newInstrument = self.getAvailableInstruments(self.editingItemTag)[self.pickerView.selectedRow(inComponent: 0)]
+        self.editSoundEffect = SoundEffect(sound: SoundEffect.getEffect(newInstrument))
+        self.editSoundEffect.play()
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        
+        let availableInstruments = self.getAvailableInstruments(editingItemTag)
+        
+        var rowTitle = " "
+        if(row < availableInstruments.count){
+            rowTitle = SoundEffect.getEffect(availableInstruments[row])
+        }
+        let attributedString = NSAttributedString(string: rowTitle, attributes: [NSForegroundColorAttributeName : UIColor.hexStringToUIColor(hex: "487DB5")])
+        return attributedString
+    }
+    
+    
     
     
     /* Navigation Methods */
@@ -354,9 +472,44 @@ class ViewController: UIViewController {
         
         // Setup UI
         DispatchQueue.main.async {
-            self.instructionsLabel.isHidden = true
-            self.saveButton.isHidden = true
-            self.restoreDefaultsButton.isHidden = true
+            // PickerView
+            self.pickerView.isHidden = true
+            self.pickerView.dataSource = self
+            self.pickerView.delegate = self
+            self.pickerView.frame = CGRect(x: 0, y: Int(self.view.frame.height - 180), width: Int(self.view.frame.width), height: 180)
+            self.pickerView.backgroundColor = UIColor.groupTableViewBackground
+            self.pickerView.tintColor = UIColor.hexStringToUIColor(hex: "487DB5")
+            // self.pickerView.layer.borderColor = UIColor.darkGray.cgColor
+            // self.pickerView.layer.borderWidth = 1
+            self.pickerView.showsSelectionIndicator = true
+            self.view.addSubview(self.pickerView)
+            // PickerView Toolbar
+            self.toolBar = UIToolbar()
+            self.toolBar.barStyle = UIBarStyle.default
+            self.toolBar.isTranslucent = false
+            self.toolBar.backgroundColor = UIColor.lightGray
+            self.toolBar.sizeToFit()
+            // PickerView Toolbar Buttons
+            let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ViewController.savePicker))
+            let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+            let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ViewController.hidePicker))
+            self.toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+            self.toolBar.isUserInteractionEnabled = true
+            self.view.addSubview(self.toolBar)
+            // PickerView Constraints
+            self.pickerView.translatesAutoresizingMaskIntoConstraints = false
+            self.toolBar.translatesAutoresizingMaskIntoConstraints = false
+            self.toolBar.isHidden = true
+            let bottomConstraint = NSLayoutConstraint(item: self.pickerView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
+            let leftConstraint = NSLayoutConstraint(item: self.pickerView, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
+            let rightConstraint = NSLayoutConstraint(item: self.pickerView, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0)
+            let toolBarLeftConstraint = NSLayoutConstraint(item: self.toolBar, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.pickerView, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
+            let toolBarReftConstraint = NSLayoutConstraint(item: self.toolBar, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.pickerView, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0)
+            let toolBarBottomConstraint = NSLayoutConstraint(item: self.toolBar, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.pickerView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0)
+            let pickerViewHeightConstraint = NSLayoutConstraint(item: self.pickerView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 180)
+            NSLayoutConstraint.activate([bottomConstraint, leftConstraint, rightConstraint, toolBarLeftConstraint, toolBarReftConstraint, toolBarBottomConstraint, pickerViewHeightConstraint])
+            
+            self.settingsStackView.isHidden = true
             self.playButton.isEnabled = false
             
             self.buttons.append(self.leftOne)
@@ -382,13 +535,22 @@ class ViewController: UIViewController {
                     button.setTitle(SoundEffect.getEffect(self.buttonSettings[buttonNumber]), for: .normal)
                     buttonNumber += 1
                 }
-                button.backgroundColor = UIColor.lightGray
+                button.backgroundColor = UIColor.hexStringToUIColor(hex: "5C5E66")
                 button.layer.cornerRadius = 3
                 button.layer.borderColor = UIColor.darkGray.cgColor
                 button.layer.borderWidth = 2
                 button.clipsToBounds = true
                 button.setTitleColor(UIColor.groupTableViewBackground, for: .normal)
             }
+            
+            // Control View UI Touches
+            self.controlStackView.layer.borderColor = UIColor.darkGray.cgColor
+            self.controlStackView.layer.borderWidth = 2
+            self.controlStackView.clipsToBounds = true
+            self.controlStackView.layer.cornerRadius = 3
+            self.controlStackView.inputView?.backgroundColor = UIColor.darkText
+            
+            
         }
         
     }

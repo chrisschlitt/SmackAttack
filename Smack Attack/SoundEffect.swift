@@ -26,18 +26,6 @@ class SoundEffect {
         self.player = AVAudioPlayer()
     }
     
-    static func defaults() -> [Int] {
-        return [0, 1, 2, 3, 4, 5, 6, 7]
-    }
-    
-    static func getSoundEffects() -> [String] {
-        return ["KickDrum", "Tom", "Crash", "Splash", "Snare", "HighHat", "Ride", "Cowbell", "Accent"]
-    }
-    
-    static func getEffect(_ index: Int) -> String {
-        return self.getSoundEffects()[index];
-    }
-    
     func play() {
         let url = Bundle.main.url(forResource: self.sound, withExtension: "m4a")!
         
@@ -49,5 +37,28 @@ class SoundEffect {
         } catch let error {
             print(error.localizedDescription)
         }
+    }
+    
+    static func defaults() -> [Int] {
+        return [0, 1, 2, 3, 4, 5, 6, 7]
+    }
+    
+    static func getSoundEffects() -> [String] {
+        return ["KickDrum", "Tom", "Crash", "Splash", "Snare", "HighHat", "Ride", "Cowbell", "Accent", "Block"]
+    }
+    
+    static func getEffect(_ index: Int) -> String {
+        return self.getSoundEffects()[index];
+    }
+    
+    static func getEffectIndex(_ instrument: String) -> Int {
+        var index = 0
+        for effect in SoundEffect.getSoundEffects() {
+            if(effect == instrument){
+                return index
+            }
+            index += 1
+        }
+        return index
     }
 }

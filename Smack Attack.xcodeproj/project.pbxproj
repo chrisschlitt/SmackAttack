@@ -24,6 +24,11 @@
 		4933720C1E848DA4006C2D30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4933720B1E848DA4006C2D30 /* Assets.xcassets */; };
 		4933720F1E848DA4006C2D30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4933720D1E848DA4006C2D30 /* LaunchScreen.storyboard */; };
 		499B31041E86017A00CF5DDF /* Accent.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 499B31031E86017A00CF5DDF /* Accent.m4a */; };
+		499B31061E861A7800CF5DDF /* Block.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 499B31051E861A7800CF5DDF /* Block.m4a */; };
+		499B31091E8621EF00CF5DDF /* smack_logo_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B31071E8621EF00CF5DDF /* smack_logo_small.png */; };
+		499B310A1E8621EF00CF5DDF /* smack_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 499B31081E8621EF00CF5DDF /* smack_logo.png */; };
+		499B310E1E86F46300CF5DDF /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 499B310C1E86F46300CF5DDF /* Lato-Black.ttf */; };
+		499B310F1E86F46300CF5DDF /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 499B310D1E86F46300CF5DDF /* Lato-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +51,11 @@
 		4933720E1E848DA4006C2D30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		493372101E848DA4006C2D30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		499B31031E86017A00CF5DDF /* Accent.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Accent.m4a; sourceTree = "<group>"; };
+		499B31051E861A7800CF5DDF /* Block.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Block.m4a; sourceTree = "<group>"; };
+		499B31071E8621EF00CF5DDF /* smack_logo_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smack_logo_small.png; sourceTree = "<group>"; };
+		499B31081E8621EF00CF5DDF /* smack_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smack_logo.png; sourceTree = "<group>"; };
+		499B310C1E86F46300CF5DDF /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		499B310D1E86F46300CF5DDF /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +81,7 @@
 				491706FD1E84D66600AAB76F /* Cowbell.m4a */,
 				491706FF1E84D6B900AAB76F /* Splash.m4a */,
 				499B31031E86017A00CF5DDF /* Accent.m4a */,
+				499B31051E861A7800CF5DDF /* Block.m4a */,
 			);
 			name = SoundEffects;
 			sourceTree = "<group>";
@@ -103,9 +114,29 @@
 				4933720D1E848DA4006C2D30 /* LaunchScreen.storyboard */,
 				493372101E848DA4006C2D30 /* Info.plist */,
 				493372081E848DA4006C2D30 /* Smack_Attack.xcdatamodeld */,
+				499B31101E86F46800CF5DDF /* Fonts */,
+				499B310B1E8621F500CF5DDF /* Images */,
 				491706F21E84CC0D00AAB76F /* SoundEffects */,
 			);
 			path = "Smack Attack";
+			sourceTree = "<group>";
+		};
+		499B310B1E8621F500CF5DDF /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				499B31071E8621EF00CF5DDF /* smack_logo_small.png */,
+				499B31081E8621EF00CF5DDF /* smack_logo.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		499B31101E86F46800CF5DDF /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				499B310C1E86F46300CF5DDF /* Lato-Black.ttf */,
+				499B310D1E86F46300CF5DDF /* Lato-Bold.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,13 +199,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				499B310A1E8621EF00CF5DDF /* smack_logo.png in Resources */,
 				499B31041E86017A00CF5DDF /* Accent.m4a in Resources */,
 				491706FA1E84D5D400AAB76F /* HighHat.m4a in Resources */,
 				491706FC1E84D60600AAB76F /* Ride.m4a in Resources */,
+				499B310E1E86F46300CF5DDF /* Lato-Black.ttf in Resources */,
 				491706F61E84D0C300AAB76F /* Crash.m4a in Resources */,
 				491706F41E84D02200AAB76F /* Tom.m4a in Resources */,
 				4933720F1E848DA4006C2D30 /* LaunchScreen.storyboard in Resources */,
+				499B31091E8621EF00CF5DDF /* smack_logo_small.png in Resources */,
+				499B31061E861A7800CF5DDF /* Block.m4a in Resources */,
 				4933720C1E848DA4006C2D30 /* Assets.xcassets in Resources */,
+				499B310F1E86F46300CF5DDF /* Lato-Bold.ttf in Resources */,
 				491706F11E84CC0500AAB76F /* KickDrum.m4a in Resources */,
 				491706FE1E84D66600AAB76F /* Cowbell.m4a in Resources */,
 				491707001E84D6B900AAB76F /* Splash.m4a in Resources */,
