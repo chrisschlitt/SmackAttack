@@ -13,10 +13,12 @@ class SoundEffect {
     
     var player: AVAudioPlayer
     var sound: String
+    var loaded = false
     
     init(sound: String){
         self.sound = sound
         self.player = AVAudioPlayer()
+        self.loaded = true
     }
     
     init(){
@@ -24,11 +26,17 @@ class SoundEffect {
         self.player = AVAudioPlayer()
     }
     
-    static func getSoundEffects() -> [String] {
-        return ["kick_drum", "tom", "crash", "splash", "snare", "high_hat", "ride", "cowbell"]
+    static func defaults() -> [Int] {
+        return [0, 1, 2, 3, 4, 5, 6, 7]
     }
     
+    static func getSoundEffects() -> [String] {
+        return ["KickDrum", "Tom", "Crash", "Splash", "Snare", "HighHat", "Ride", "Cowbell", "Accent"]
+    }
     
+    static func getEffect(_ index: Int) -> String {
+        return self.getSoundEffects()[index];
+    }
     
     func play() {
         let url = Bundle.main.url(forResource: self.sound, withExtension: "m4a")!

@@ -8,32 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		491706EF1E84C86800AAB76F /* SoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491706EE1E84C86800AAB76F /* SoundEffect.swift */; };
-		491706F11E84CC0500AAB76F /* kick_drum.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 491706F01E84CC0500AAB76F /* kick_drum.m4a */; };
-		491706F41E84D02200AAB76F /* tom.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 491706F31E84D02200AAB76F /* tom.m4a */; };
-		491706F61E84D0C300AAB76F /* crash.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 491706F51E84D0C300AAB76F /* crash.m4a */; };
-		491706F81E84D58900AAB76F /* snare.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 491706F71E84D58900AAB76F /* snare.m4a */; };
-		491706FA1E84D5D400AAB76F /* high_hat.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 491706F91E84D5D400AAB76F /* high_hat.m4a */; };
-		491706FC1E84D60600AAB76F /* ride.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 491706FB1E84D60600AAB76F /* ride.m4a */; };
-		491706FE1E84D66600AAB76F /* cowbell.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 491706FD1E84D66600AAB76F /* cowbell.m4a */; };
-		491707001E84D6B900AAB76F /* splash.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 491706FF1E84D6B900AAB76F /* splash.m4a */; };
+		491706F11E84CC0500AAB76F /* KickDrum.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 491706F01E84CC0500AAB76F /* KickDrum.m4a */; };
+		491706F41E84D02200AAB76F /* Tom.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 491706F31E84D02200AAB76F /* Tom.m4a */; };
+		491706F61E84D0C300AAB76F /* Crash.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 491706F51E84D0C300AAB76F /* Crash.m4a */; };
+		491706F81E84D58900AAB76F /* Snare.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 491706F71E84D58900AAB76F /* Snare.m4a */; };
+		491706FA1E84D5D400AAB76F /* HighHat.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 491706F91E84D5D400AAB76F /* HighHat.m4a */; };
+		491706FC1E84D60600AAB76F /* Ride.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 491706FB1E84D60600AAB76F /* Ride.m4a */; };
+		491706FE1E84D66600AAB76F /* Cowbell.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 491706FD1E84D66600AAB76F /* Cowbell.m4a */; };
+		491707001E84D6B900AAB76F /* Splash.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 491706FF1E84D6B900AAB76F /* Splash.m4a */; };
+		491707041E85D19900AAB76F /* MediaSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491707031E85D19900AAB76F /* MediaSelectViewController.swift */; };
 		493372021E848DA4006C2D30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493372011E848DA4006C2D30 /* AppDelegate.swift */; };
 		493372041E848DA4006C2D30 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493372031E848DA4006C2D30 /* ViewController.swift */; };
 		493372071E848DA4006C2D30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 493372051E848DA4006C2D30 /* Main.storyboard */; };
 		4933720A1E848DA4006C2D30 /* Smack_Attack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 493372081E848DA4006C2D30 /* Smack_Attack.xcdatamodeld */; };
 		4933720C1E848DA4006C2D30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4933720B1E848DA4006C2D30 /* Assets.xcassets */; };
 		4933720F1E848DA4006C2D30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4933720D1E848DA4006C2D30 /* LaunchScreen.storyboard */; };
+		499B31041E86017A00CF5DDF /* Accent.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 499B31031E86017A00CF5DDF /* Accent.m4a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		491706EE1E84C86800AAB76F /* SoundEffect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
-		491706F01E84CC0500AAB76F /* kick_drum.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = kick_drum.m4a; sourceTree = "<group>"; };
-		491706F31E84D02200AAB76F /* tom.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = tom.m4a; sourceTree = "<group>"; };
-		491706F51E84D0C300AAB76F /* crash.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = crash.m4a; sourceTree = "<group>"; };
-		491706F71E84D58900AAB76F /* snare.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = snare.m4a; sourceTree = "<group>"; };
-		491706F91E84D5D400AAB76F /* high_hat.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = high_hat.m4a; sourceTree = "<group>"; };
-		491706FB1E84D60600AAB76F /* ride.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ride.m4a; sourceTree = "<group>"; };
-		491706FD1E84D66600AAB76F /* cowbell.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = cowbell.m4a; sourceTree = "<group>"; };
-		491706FF1E84D6B900AAB76F /* splash.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = splash.m4a; sourceTree = "<group>"; };
+		491706F01E84CC0500AAB76F /* KickDrum.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = KickDrum.m4a; sourceTree = "<group>"; };
+		491706F31E84D02200AAB76F /* Tom.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tom.m4a; sourceTree = "<group>"; };
+		491706F51E84D0C300AAB76F /* Crash.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Crash.m4a; sourceTree = "<group>"; };
+		491706F71E84D58900AAB76F /* Snare.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Snare.m4a; sourceTree = "<group>"; };
+		491706F91E84D5D400AAB76F /* HighHat.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = HighHat.m4a; sourceTree = "<group>"; };
+		491706FB1E84D60600AAB76F /* Ride.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ride.m4a; sourceTree = "<group>"; };
+		491706FD1E84D66600AAB76F /* Cowbell.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Cowbell.m4a; sourceTree = "<group>"; };
+		491706FF1E84D6B900AAB76F /* Splash.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Splash.m4a; sourceTree = "<group>"; };
+		491707031E85D19900AAB76F /* MediaSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaSelectViewController.swift; sourceTree = "<group>"; };
 		493371FE1E848DA4006C2D30 /* Smack Attack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smack Attack.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		493372011E848DA4006C2D30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		493372031E848DA4006C2D30 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,6 +45,7 @@
 		4933720B1E848DA4006C2D30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4933720E1E848DA4006C2D30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		493372101E848DA4006C2D30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		499B31031E86017A00CF5DDF /* Accent.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = Accent.m4a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,14 +62,15 @@
 		491706F21E84CC0D00AAB76F /* SoundEffects */ = {
 			isa = PBXGroup;
 			children = (
-				491706F01E84CC0500AAB76F /* kick_drum.m4a */,
-				491706F31E84D02200AAB76F /* tom.m4a */,
-				491706F51E84D0C300AAB76F /* crash.m4a */,
-				491706F71E84D58900AAB76F /* snare.m4a */,
-				491706F91E84D5D400AAB76F /* high_hat.m4a */,
-				491706FB1E84D60600AAB76F /* ride.m4a */,
-				491706FD1E84D66600AAB76F /* cowbell.m4a */,
-				491706FF1E84D6B900AAB76F /* splash.m4a */,
+				491706F01E84CC0500AAB76F /* KickDrum.m4a */,
+				491706F31E84D02200AAB76F /* Tom.m4a */,
+				491706F51E84D0C300AAB76F /* Crash.m4a */,
+				491706F71E84D58900AAB76F /* Snare.m4a */,
+				491706F91E84D5D400AAB76F /* HighHat.m4a */,
+				491706FB1E84D60600AAB76F /* Ride.m4a */,
+				491706FD1E84D66600AAB76F /* Cowbell.m4a */,
+				491706FF1E84D6B900AAB76F /* Splash.m4a */,
+				499B31031E86017A00CF5DDF /* Accent.m4a */,
 			);
 			name = SoundEffects;
 			sourceTree = "<group>";
@@ -91,6 +96,7 @@
 			children = (
 				493372011E848DA4006C2D30 /* AppDelegate.swift */,
 				493372031E848DA4006C2D30 /* ViewController.swift */,
+				491707031E85D19900AAB76F /* MediaSelectViewController.swift */,
 				491706EE1E84C86800AAB76F /* SoundEffect.swift */,
 				493372051E848DA4006C2D30 /* Main.storyboard */,
 				4933720B1E848DA4006C2D30 /* Assets.xcassets */,
@@ -162,17 +168,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				491706FA1E84D5D400AAB76F /* high_hat.m4a in Resources */,
-				491706FC1E84D60600AAB76F /* ride.m4a in Resources */,
-				491706F61E84D0C300AAB76F /* crash.m4a in Resources */,
-				491706F41E84D02200AAB76F /* tom.m4a in Resources */,
+				499B31041E86017A00CF5DDF /* Accent.m4a in Resources */,
+				491706FA1E84D5D400AAB76F /* HighHat.m4a in Resources */,
+				491706FC1E84D60600AAB76F /* Ride.m4a in Resources */,
+				491706F61E84D0C300AAB76F /* Crash.m4a in Resources */,
+				491706F41E84D02200AAB76F /* Tom.m4a in Resources */,
 				4933720F1E848DA4006C2D30 /* LaunchScreen.storyboard in Resources */,
 				4933720C1E848DA4006C2D30 /* Assets.xcassets in Resources */,
-				491706F11E84CC0500AAB76F /* kick_drum.m4a in Resources */,
-				491706FE1E84D66600AAB76F /* cowbell.m4a in Resources */,
-				491707001E84D6B900AAB76F /* splash.m4a in Resources */,
+				491706F11E84CC0500AAB76F /* KickDrum.m4a in Resources */,
+				491706FE1E84D66600AAB76F /* Cowbell.m4a in Resources */,
+				491707001E84D6B900AAB76F /* Splash.m4a in Resources */,
 				493372071E848DA4006C2D30 /* Main.storyboard in Resources */,
-				491706F81E84D58900AAB76F /* snare.m4a in Resources */,
+				491706F81E84D58900AAB76F /* Snare.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +190,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				491707041E85D19900AAB76F /* MediaSelectViewController.swift in Sources */,
 				493372041E848DA4006C2D30 /* ViewController.swift in Sources */,
 				493372021E848DA4006C2D30 /* AppDelegate.swift in Sources */,
 				491706EF1E84C86800AAB76F /* SoundEffect.swift in Sources */,
