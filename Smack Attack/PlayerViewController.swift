@@ -205,8 +205,11 @@ class PlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                         button.layer.addSublayer(borderLayer)
                         button.layer.borderWidth = 0
                         buttonCount += 1
-                    } else {
+                    } else if(buttonCount < 10) {
                         button.layer.borderColor = UIColor.groupTableViewBackground.cgColor
+                        buttonCount += 1
+                    } else {
+                        break
                     }
                     
                     button.backgroundColor = UIColor.hexStringToUIColor(hex: "2662B5")
@@ -243,8 +246,11 @@ class PlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                         }
                         button.layer.borderWidth = 2
                         buttonCount += 1
-                    } else {
+                    } else if(buttonCount < 10) {
                         button.layer.borderColor = UIColor.darkGray.cgColor
+                        buttonCount += 1
+                    } else {
+                        break
                     }
                     button.backgroundColor = UIColor.hexStringToUIColor(hex: "5C5E66")
                     
@@ -598,7 +604,7 @@ class PlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             self.playButton.backgroundColor = UIColor.darkGray
             self.nowPlayingContainer.clipsToBounds = true
             self.nowPlayingContainer.layer.cornerRadius = 2
-            self.nowPlayingContainer.layer.borderColor = UIColor.hexStringToUIColor(hex: "7B202B").cgColor
+            self.nowPlayingContainer.layer.borderColor = UIColor.hexStringToUIColor(hex: "801727").adjust(by: -15.0)?.cgColor
             self.nowPlayingContainer.layer.borderWidth = 1
             let leftTopButtonsConstraint = NSLayoutConstraint(item: self.leftOne, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.lessThanOrEqual, toItem: self.controlStackViewContainer, attribute: NSLayoutAttribute.centerX, multiplier: 1.0, constant: -5.0)
             let rightTopButtonsConstraint = NSLayoutConstraint(item: self.rightOne, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.greaterThanOrEqual, toItem: self.controlStackViewContainer, attribute: NSLayoutAttribute.centerX, multiplier: 1.0, constant: 5.0)
@@ -638,23 +644,11 @@ class PlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             self.toolBarShowingConstraint = NSLayoutConstraint(item: self.pickerView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0) // Show
             let leftConstraint = NSLayoutConstraint(item: self.pickerView, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
             let rightConstraint = NSLayoutConstraint(item: self.pickerView, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0)
-            
-            
-            
             let toolBarLeftConstraint = NSLayoutConstraint(item: self.toolBar, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.pickerView, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
-            
             let toolBarRightConstraint = NSLayoutConstraint(item: self.toolBar, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.pickerView, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0)
-            
-            
-            
             let toolBarBottomConstraint = NSLayoutConstraint(item: self.toolBar, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.pickerView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0)
-            
-            self.toolBarHiddenConstraint = NSLayoutConstraint(item: self.toolBar, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0) // Hidden
-            
-            
-            
+            self.toolBarHiddenConstraint = NSLayoutConstraint(item: self.toolBar, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 150)
             let pickerViewHeightConstraint = NSLayoutConstraint(item: self.pickerView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 130)
-            
             
             NSLayoutConstraint.activate([self.toolBarHiddenConstraint, leftConstraint, rightConstraint, toolBarLeftConstraint, toolBarRightConstraint, toolBarBottomConstraint, pickerViewHeightConstraint])
             
@@ -669,11 +663,11 @@ class PlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             self.buttons.append(self.rightTwo)
             self.buttons.append(self.rightThree)
             self.buttons.append(self.rightFour)
+            self.buttons.append(self.saveButton)
+            self.buttons.append(self.restoreDefaultsButton)
             self.buttons.append(self.editSoundsButton)
             self.buttons.append(self.chooseMusicButton)
             self.buttons.append(self.playButton)
-            self.buttons.append(self.saveButton)
-            self.buttons.append(self.restoreDefaultsButton)
             
             // Load Settings
             var buttonNumber = 0
@@ -691,6 +685,11 @@ class PlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 button.clipsToBounds = true
                 button.setTitleColor(UIColor.groupTableViewBackground, for: .normal)
             }
+            self.editSoundsButton.backgroundColor = UIColor.hexStringToUIColor(hex: "2662B5")
+            self.editSoundsButton.layer.borderColor = UIColor.hexStringToUIColor(hex: "2662B5").adjust(by: -15.0)?.cgColor
+            self.chooseMusicButton.backgroundColor = UIColor.hexStringToUIColor(hex: "fff43d")
+            self.chooseMusicButton.layer.borderColor = UIColor.hexStringToUIColor(hex: "fff43d").adjust(by: -15.0)?.cgColor
+            self.chooseMusicButton.setTitleColor(UIColor.darkText, for: .normal)
             
             // Control View UI Touches
             self.controlStackViewContainer.layer.borderColor = UIColor.darkGray.cgColor
@@ -705,10 +704,8 @@ class PlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         // Setup Background Audio Session
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
-            print("AVAudioSession Category Playback OK")
             do {
                 try AVAudioSession.sharedInstance().setActive(true)
-                print("AVAudioSession is Active")
             } catch {
                 print(error)
             }
@@ -748,6 +745,26 @@ extension UIColor {
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
             alpha: CGFloat(1.0)
         )
+    }
+    
+    func lighter(by percentage:CGFloat=30.0) -> UIColor? {
+        return self.adjust(by: abs(percentage) )
+    }
+    
+    func darker(by percentage:CGFloat=30.0) -> UIColor? {
+        return self.adjust(by: -1 * abs(percentage) )
+    }
+    
+    func adjust(by percentage:CGFloat=30.0) -> UIColor? {
+        var r:CGFloat=0, g:CGFloat=0, b:CGFloat=0, a:CGFloat=0;
+        if(self.getRed(&r, green: &g, blue: &b, alpha: &a)){
+            return UIColor(red: min(r + percentage/100, 1.0),
+                           green: min(g + percentage/100, 1.0),
+                           blue: min(b + percentage/100, 1.0),
+                           alpha: a)
+        }else{
+            return nil
+        }
     }
 }
 
