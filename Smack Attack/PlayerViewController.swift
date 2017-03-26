@@ -139,11 +139,16 @@ class PlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         if(self.showingEditView){
             // Change Sound Effect
             let newInstrument = self.getAvailableInstrument(buttonSettings[sender.tag])
-            sender.setTitle(SoundEffect.getEffect(newInstrument), for: .normal)
-            self.saveSetting(position: sender.tag, instrument: newInstrument)
+            DispatchQueue.main.async {
+                sender.setTitle(SoundEffect.getEffect(newInstrument), for: .normal)
+            }
             
-            self.editSoundEffect = SoundEffect(sound: SoundEffect.getEffect(newInstrument))
-            self.editSoundEffect.play()
+            DispatchQueue.global().async {
+                self.saveSetting(position: sender.tag, instrument: newInstrument)
+                self.editSoundEffect = SoundEffect(sound: SoundEffect.getEffect(newInstrument))
+                self.editSoundEffect.play()
+            }
+            
         }
     
     }
@@ -262,7 +267,7 @@ class PlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func showpicker(){
         DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.15, animations: {
+            UIView.animate(withDuration: 0.25, animations: {
                 self.pickerView.reloadAllComponents()
                 self.toolBarHiddenConstraint.isActive = false
                 self.toolBarShowingConstraint.isActive = true
@@ -275,7 +280,7 @@ class PlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func hidePicker(){
         DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.15, animations: {
+            UIView.animate(withDuration: 0.25, animations: {
                 self.pickerView.selectRow(0, inComponent: 0, animated: false)
                 self.toolBarShowingConstraint.isActive = false
                 self.toolBarHiddenConstraint.isActive = true
@@ -648,7 +653,7 @@ class PlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             let toolBarRightConstraint = NSLayoutConstraint(item: self.toolBar, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.pickerView, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0)
             let toolBarBottomConstraint = NSLayoutConstraint(item: self.toolBar, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.pickerView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0)
             self.toolBarHiddenConstraint = NSLayoutConstraint(item: self.toolBar, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 150)
-            let pickerViewHeightConstraint = NSLayoutConstraint(item: self.pickerView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 130)
+            let pickerViewHeightConstraint = NSLayoutConstraint(item: self.pickerView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 200)
             
             NSLayoutConstraint.activate([self.toolBarHiddenConstraint, leftConstraint, rightConstraint, toolBarLeftConstraint, toolBarRightConstraint, toolBarBottomConstraint, pickerViewHeightConstraint])
             
