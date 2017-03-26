@@ -18,7 +18,7 @@
 		491707001E84D6B900AAB76F /* Splash.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 491706FF1E84D6B900AAB76F /* Splash.m4a */; };
 		491707041E85D19900AAB76F /* MediaSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491707031E85D19900AAB76F /* MediaSelectViewController.swift */; };
 		493372021E848DA4006C2D30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493372011E848DA4006C2D30 /* AppDelegate.swift */; };
-		493372041E848DA4006C2D30 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493372031E848DA4006C2D30 /* ViewController.swift */; };
+		493372041E848DA4006C2D30 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493372031E848DA4006C2D30 /* PlayerViewController.swift */; };
 		493372071E848DA4006C2D30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 493372051E848DA4006C2D30 /* Main.storyboard */; };
 		4933720A1E848DA4006C2D30 /* Smack_Attack.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 493372081E848DA4006C2D30 /* Smack_Attack.xcdatamodeld */; };
 		4933720C1E848DA4006C2D30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4933720B1E848DA4006C2D30 /* Assets.xcassets */; };
@@ -45,7 +45,7 @@
 		491707031E85D19900AAB76F /* MediaSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaSelectViewController.swift; sourceTree = "<group>"; };
 		493371FE1E848DA4006C2D30 /* Smack Attack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smack Attack.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		493372011E848DA4006C2D30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		493372031E848DA4006C2D30 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		493372031E848DA4006C2D30 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		493372061E848DA4006C2D30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		493372091E848DA4006C2D30 /* Smack_Attack.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Smack_Attack.xcdatamodel; sourceTree = "<group>"; };
 		4933720B1E848DA4006C2D30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,7 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				493372011E848DA4006C2D30 /* AppDelegate.swift */,
-				493372031E848DA4006C2D30 /* ViewController.swift */,
+				493372031E848DA4006C2D30 /* PlayerViewController.swift */,
 				491707031E85D19900AAB76F /* MediaSelectViewController.swift */,
 				491706EE1E84C86800AAB76F /* SoundEffect.swift */,
 				493372051E848DA4006C2D30 /* Main.storyboard */,
@@ -176,6 +176,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 94LM7998EU;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -231,7 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				491707041E85D19900AAB76F /* MediaSelectViewController.swift in Sources */,
-				493372041E848DA4006C2D30 /* ViewController.swift in Sources */,
+				493372041E848DA4006C2D30 /* PlayerViewController.swift in Sources */,
 				493372021E848DA4006C2D30 /* AppDelegate.swift in Sources */,
 				491706EF1E84C86800AAB76F /* SoundEffect.swift in Sources */,
 				4933720A1E848DA4006C2D30 /* Smack_Attack.xcdatamodeld in Sources */,

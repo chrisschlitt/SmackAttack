@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PlayerViewController.swift
 //  Smack Attack
 //
 //  Created by Christopher Schlitt on 3/23/17.
@@ -11,7 +11,7 @@ import MediaPlayer
 import AVFoundation
 import CoreData
 
-class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class PlayerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     /* Media Resources */
     var currentSongTitle: String!
@@ -58,6 +58,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var bottomSliderConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomSliderTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var topSliderTrailingConstraint: NSLayoutConstraint!
+    var toolBarShowingConstraint: NSLayoutConstraint!
+    var toolBarHiddenConstraint: NSLayoutConstraint!
     
     /* Media Actions */
     @IBAction func playButtonPressed(_ sender: Any) {
@@ -165,10 +167,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     /* Edit View Actions */
     @IBAction func saveButtonPressed(_ sender: Any) {
+        self.hidePicker()
         self.saveEditScreen()
     }
     @IBAction func restoreDefaultsButtonPressed(_ sender: Any) {
         // Restore Default Settings
+        self.hidePicker()
         self.buttonSettings = self.loadSettings(resetToDefault: true)
         for i in 0..<self.buttonSettings.count {
             buttons[i].setTitle(SoundEffect.getEffect(i), for: .normal)
@@ -194,9 +198,18 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 self.view.backgroundColor = UIColor.hexStringToUIColor(hex: "2662B5")
                 self.controlStackViewContainer.backgroundColor = UIColor.hexStringToUIColor(hex: "2662B5")
                 
+                var buttonCount = 0
                 for button in self.buttons {
+                    if(buttonCount < 8){
+                        let borderLayer = CAShapeLayer.dashedBorderLayerWithColor(frame: button.frame, color: UIColor.groupTableViewBackground)
+                        button.layer.addSublayer(borderLayer)
+                        button.layer.borderWidth = 0
+                        buttonCount += 1
+                    } else {
+                        button.layer.borderColor = UIColor.groupTableViewBackground.cgColor
+                    }
+                    
                     button.backgroundColor = UIColor.hexStringToUIColor(hex: "2662B5")
-                    button.layer.borderColor = UIColor.groupTableViewBackground.cgColor
                 }
             })
         }
@@ -220,9 +233,21 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 self.view.backgroundColor = UIColor.hexStringToUIColor(hex: "2C2C2C")
                 self.controlStackViewContainer.backgroundColor = UIColor.hexStringToUIColor(hex: "2C2C2C")
                 
+                var buttonCount = 0
                 for button in self.buttons {
+                    if(buttonCount < 8){
+                        for layer in button.layer.sublayers! {
+                            if layer.name == "borderLayer" {
+                                layer.removeFromSuperlayer()
+                            }
+                        }
+                        button.layer.borderWidth = 2
+                        buttonCount += 1
+                    } else {
+                        button.layer.borderColor = UIColor.darkGray.cgColor
+                    }
                     button.backgroundColor = UIColor.hexStringToUIColor(hex: "5C5E66")
-                    button.layer.borderColor = UIColor.darkGray.cgColor
+                    
                     
                 }
             })
@@ -231,10 +256,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func showpicker(){
         DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.35, animations: {
+            UIView.animate(withDuration: 0.15, animations: {
                 self.pickerView.reloadAllComponents()
-                self.pickerView.isHidden = false
-                self.toolBar.isHidden = false
+                self.toolBarHiddenConstraint.isActive = false
+                self.toolBarShowingConstraint.isActive = true
+                self.view.setNeedsLayout()
+                self.view.layoutIfNeeded()
                 self.pickerView.selectedRow(inComponent: 0)
             })
         }
@@ -242,10 +269,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     func hidePicker(){
         DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.35, animations: {
+            UIView.animate(withDuration: 0.15, animations: {
                 self.pickerView.selectRow(0, inComponent: 0, animated: false)
-                self.pickerView.isHidden = true
-                self.toolBar.isHidden = true
+                self.toolBarShowingConstraint.isActive = false
+                self.toolBarHiddenConstraint.isActive = true
+                self.view.setNeedsLayout()
+                self.view.layoutIfNeeded()
             })
         }
     }
@@ -559,6 +588,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         self.musicVolume = 0.5
         self.soundEffectVolume = 0.5
+        self.audioPlayer.allowsExternalPlayback = true
         
         // Setup UI
         DispatchQueue.main.async {
@@ -580,7 +610,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             self.instructionsLabel.text = "Tap on a button to change the sound effect. Tap and hold on a button to choose from a list"
             
             // PickerView
-            self.pickerView.isHidden = true
             self.pickerView.dataSource = self
             self.pickerView.delegate = self
             self.pickerView.frame = CGRect(x: 0, y: Int(self.view.frame.height - 180), width: Int(self.view.frame.width), height: 180)
@@ -597,24 +626,37 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             self.toolBar.backgroundColor = UIColor.lightGray
             self.toolBar.sizeToFit()
             // PickerView Toolbar Buttons
-            let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ViewController.savePicker))
+            let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(PlayerViewController.savePicker))
             let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-            let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(ViewController.hidePicker))
+            let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(PlayerViewController.hidePicker))
             self.toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
             self.toolBar.isUserInteractionEnabled = true
             self.view.addSubview(self.toolBar)
             // PickerView Constraints
             self.pickerView.translatesAutoresizingMaskIntoConstraints = false
             self.toolBar.translatesAutoresizingMaskIntoConstraints = false
-            self.toolBar.isHidden = true
-            let bottomConstraint = NSLayoutConstraint(item: self.pickerView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
+            self.toolBarShowingConstraint = NSLayoutConstraint(item: self.pickerView, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0) // Show
             let leftConstraint = NSLayoutConstraint(item: self.pickerView, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
             let rightConstraint = NSLayoutConstraint(item: self.pickerView, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0)
+            
+            
+            
             let toolBarLeftConstraint = NSLayoutConstraint(item: self.toolBar, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: self.pickerView, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
-            let toolBarReftConstraint = NSLayoutConstraint(item: self.toolBar, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.pickerView, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0)
+            
+            let toolBarRightConstraint = NSLayoutConstraint(item: self.toolBar, attribute: NSLayoutAttribute.trailing, relatedBy: NSLayoutRelation.equal, toItem: self.pickerView, attribute: NSLayoutAttribute.trailing, multiplier: 1, constant: 0)
+            
+            
+            
             let toolBarBottomConstraint = NSLayoutConstraint(item: self.toolBar, attribute: NSLayoutAttribute.bottom, relatedBy: NSLayoutRelation.equal, toItem: self.pickerView, attribute: NSLayoutAttribute.top, multiplier: 1, constant: 0)
-            let pickerViewHeightConstraint = NSLayoutConstraint(item: self.pickerView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 180)
-            NSLayoutConstraint.activate([bottomConstraint, leftConstraint, rightConstraint, toolBarLeftConstraint, toolBarReftConstraint, toolBarBottomConstraint, pickerViewHeightConstraint])
+            
+            self.toolBarHiddenConstraint = NSLayoutConstraint(item: self.toolBar, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: self.view, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0) // Hidden
+            
+            
+            
+            let pickerViewHeightConstraint = NSLayoutConstraint(item: self.pickerView, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 130)
+            
+            
+            NSLayoutConstraint.activate([self.toolBarHiddenConstraint, leftConstraint, rightConstraint, toolBarLeftConstraint, toolBarRightConstraint, toolBarBottomConstraint, pickerViewHeightConstraint])
             
             self.settingsStackView.isHidden = true
             self.playButton.isEnabled = false
@@ -660,6 +702,20 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             
         }
         
+        // Setup Background Audio Session
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
+            print("AVAudioSession Category Playback OK")
+            do {
+                try AVAudioSession.sharedInstance().setActive(true)
+                print("AVAudioSession is Active")
+            } catch {
+                print(error)
+            }
+        } catch {
+            print(error)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -692,6 +748,31 @@ extension UIColor {
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
             alpha: CGFloat(1.0)
         )
+    }
+}
+
+// Sashed border layer extension
+extension CAShapeLayer {
+    static func dashedBorderLayerWithColor(frame: CGRect, color: UIColor) -> CAShapeLayer {
+        
+        let  borderLayer = CAShapeLayer()
+        borderLayer.name  = "borderLayer"
+        let shapeRect = frame
+        
+        borderLayer.bounds = shapeRect
+        borderLayer.position = CGPoint(x: frame.width/2, y: frame.height/2)
+        borderLayer.fillColor = UIColor.clear.cgColor
+        borderLayer.strokeColor = color.cgColor
+        borderLayer.lineWidth = 3
+        borderLayer.lineJoin = kCALineJoinRound
+        borderLayer.lineDashPattern = NSArray(array: [NSNumber(value: 8),NSNumber(value:4)]) as? [NSNumber]
+        
+        let path = UIBezierPath.init(roundedRect: shapeRect, cornerRadius: 0)
+        
+        borderLayer.path = path.cgPath
+        
+        return borderLayer
+        
     }
 }
 

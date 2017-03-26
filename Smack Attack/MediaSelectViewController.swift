@@ -81,9 +81,6 @@ class MediaSelectViewController: UITableViewController, MPMediaPickerControllerD
                 alert.addAction(UIAlertAction(title: "Load", style: .default, handler: { [weak alert] (_) in
                     let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
                     
-                    
-                    
-                    
                     var url = (textField?.text)!
                     if(!url.hasPrefix("http")){
                         url = "https://" + url
@@ -187,7 +184,7 @@ class MediaSelectViewController: UITableViewController, MPMediaPickerControllerD
     /* Navigation Methods */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "unwindToMenu" && self.chosenSongTitle != nil){
-            let vc = segue.destination as! ViewController
+            let vc = segue.destination as! PlayerViewController
             vc.currentSongURL = self.chosenSongURL
             vc.currentSongTitle = self.chosenSongTitle
             vc.currentSongArtist = self.chosenSongArtist
